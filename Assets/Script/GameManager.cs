@@ -6,11 +6,11 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] private int _width = 4;
     [SerializeField] private int _height = 4;
-    [SerializeField] private Node _nodePrefab;
+    [SerializeField] public Node _nodePrefab;
     [SerializeField] private Block _blockPrefab;
     [SerializeField] private SpriteRenderer _boardPrefab;
 
-
+   
     private List<Node> _nodes;
     private List<Block> _blocks;
 
@@ -47,7 +47,7 @@ public class GameManager : MonoBehaviour
 
     void SpwanBlocks(int amount)
     {
-        var freeNodes = _nodes.Where(n=>n.)
+        //var freeNodes = _nodes.Where(n=>n.OccupiedBlock == null).OrderBy(b=>Random.value);
 
         for (int i = 0; i < amount; i++){
             var block = Instantiate(_blockPrefab);
