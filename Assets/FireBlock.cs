@@ -16,7 +16,11 @@ public class FireBlock : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            GameObject BlockFire = Instantiate(bulletPrefab, muzzle.position, muzzle.rotation);
+            BlockFire.AddComponent<MoveFire>();
+        }
     }
     public virtual void Fire()
     {

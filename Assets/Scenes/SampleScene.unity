@@ -531,6 +531,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cube
       objectReference: {fileID: 0}
+    - target: {fileID: 8115100041985662299, guid: 66f13b946bfc04da5bfa2bac440d2a27,
+        type: 3}
+      propertyPath: m_TagString
+      value: EnemyBlock
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 66f13b946bfc04da5bfa2bac440d2a27, type: 3}
 --- !u!4 &64237397 stripped
@@ -553,7 +558,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 64237398}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.02, y: 0.020000001, z: 0.020000005}
@@ -853,7 +858,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aaf908bd0917840abb5dfd6b85779de3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 7438629011638552079, guid: de292a4e98ad1480aad67a3b02e2b1ad,
+  bulletPrefab: {fileID: 4374469049581991315, guid: ace9e3b56f75343c9b85fb57f3941563,
     type: 3}
   muzzle: {fileID: 141814538}
 --- !u!4 &141814538
@@ -2069,6 +2074,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cube
       objectReference: {fileID: 0}
+    - target: {fileID: 8115100041985662299, guid: 66f13b946bfc04da5bfa2bac440d2a27,
+        type: 3}
+      propertyPath: m_TagString
+      value: EnemyBlock
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 66f13b946bfc04da5bfa2bac440d2a27, type: 3}
 --- !u!4 &356076733 stripped
@@ -2091,7 +2101,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 356076734}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.02, y: 0.020000001, z: 0.020000005}
@@ -3250,7 +3260,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aaf908bd0917840abb5dfd6b85779de3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 7438629011638552079, guid: de292a4e98ad1480aad67a3b02e2b1ad,
+  bulletPrefab: {fileID: 4374469049581991315, guid: ace9e3b56f75343c9b85fb57f3941563,
     type: 3}
   muzzle: {fileID: 530386242}
 --- !u!4 &530386242
@@ -5868,7 +5878,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aaf908bd0917840abb5dfd6b85779de3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 7438629011638552079, guid: de292a4e98ad1480aad67a3b02e2b1ad,
+  bulletPrefab: {fileID: 4374469049581991315, guid: ace9e3b56f75343c9b85fb57f3941563,
     type: 3}
   muzzle: {fileID: 1183840900}
 --- !u!4 &1183840900
@@ -5958,6 +5968,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cube
       objectReference: {fileID: 0}
+    - target: {fileID: 8115100041985662299, guid: 66f13b946bfc04da5bfa2bac440d2a27,
+        type: 3}
+      propertyPath: m_TagString
+      value: EnemyBlock
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 66f13b946bfc04da5bfa2bac440d2a27, type: 3}
 --- !u!4 &1188944223 stripped
@@ -5980,7 +5995,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1188944224}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.02, y: 0.020000001, z: 0.020000005}
@@ -6478,10 +6493,20 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7770189837750171048, guid: 66f13b946bfc04da5bfa2bac440d2a27,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 12c7cd2f3e1b54b3f93396526abbc296, type: 2}
     - target: {fileID: 8115100041985662299, guid: 66f13b946bfc04da5bfa2bac440d2a27,
         type: 3}
       propertyPath: m_Name
       value: Cube
+      objectReference: {fileID: 0}
+    - target: {fileID: 8115100041985662299, guid: 66f13b946bfc04da5bfa2bac440d2a27,
+        type: 3}
+      propertyPath: m_TagString
+      value: EnemyBlock
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 66f13b946bfc04da5bfa2bac440d2a27, type: 3}
@@ -6505,7 +6530,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1220734017}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.02, y: 0.020000001, z: 0.020000005}
@@ -7369,7 +7394,7 @@ GameObject:
   - component: {fileID: 1428901478}
   m_Layer: 0
   m_Name: Endrow (10)
-  m_TagString: Untagged
+  m_TagString: EnemyBlock
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10002,6 +10027,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cube
       objectReference: {fileID: 0}
+    - target: {fileID: 8115100041985662299, guid: 66f13b946bfc04da5bfa2bac440d2a27,
+        type: 3}
+      propertyPath: m_TagString
+      value: EnemyBlock
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 66f13b946bfc04da5bfa2bac440d2a27, type: 3}
 --- !u!4 &1783550126 stripped
@@ -10024,7 +10054,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1783550127}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.02, y: 0.020000001, z: 0.020000005}
@@ -10226,7 +10256,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aaf908bd0917840abb5dfd6b85779de3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 7438629011638552079, guid: de292a4e98ad1480aad67a3b02e2b1ad,
+  bulletPrefab: {fileID: 4374469049581991315, guid: ace9e3b56f75343c9b85fb57f3941563,
     type: 3}
   muzzle: {fileID: 1805863716}
 --- !u!4 &1805863716
@@ -11199,7 +11229,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aaf908bd0917840abb5dfd6b85779de3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 7438629011638552079, guid: de292a4e98ad1480aad67a3b02e2b1ad,
+  bulletPrefab: {fileID: 4374469049581991315, guid: ace9e3b56f75343c9b85fb57f3941563,
     type: 3}
   muzzle: {fileID: 1990660776}
 --- !u!4 &1990660776
