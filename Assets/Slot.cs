@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Slot : MonoBehaviour
 {
@@ -8,13 +9,17 @@ public class Slot : MonoBehaviour
     [SerializeField] private int z;
     [SerializeField] private int value;
 
+    [SerializeField] private Text valueText;
+
+
     [SerializeField] private bool isChecker; 
     
     private void Start()
     {
         x = (int)transform.position.x;
         z = (int)transform.position.z;
-       
+
+        
     }
 
     public int Value => value;
@@ -35,13 +40,23 @@ public class Slot : MonoBehaviour
             Debug.Log("trigger");
             var farwardPos = other.transform.position;
             gameObject.transform.position = farwardPos;
-            LeanTween.moveLocalZ(gameObject, 10, .5f);
+            //LeanTween.moveLocalZ(gameObject, 10, .5f);
             Destroy(slotAttack.gameObject);
         }
+
+        
     }
+
+
 
     public int CalculateTotal(int valueB)
     {
         return value + valueB;
+    }
+
+    public void IsShoot()
+    {
+        LeanTween.moveLocalZ(gameObject, 10, 1);
+
     }
 }
