@@ -301,7 +301,7 @@ MonoBehaviour:
   z: 0
   value: 2
   valueText: {fileID: 0}
-  isChecker: 1
+  isChecker: 0
 --- !u!65 &5662042833581391546
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -474,7 +474,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a9fe1d0e03f101e4d814ec0487404443, type: 2}
+  - {fileID: 2100000, guid: 12c7cd2f3e1b54b3f93396526abbc296, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
