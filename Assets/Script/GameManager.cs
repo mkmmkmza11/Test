@@ -4,23 +4,24 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public GameObject blockIsShot;
+    public float Timer=5;
+    [SerializeField] protected float TimeCount;
 
-    void ShooterBlock()
+    private void Start()
     {
-        Instantiate(blockIsShot);
+        
+        Timer = 5;
+        TimeCount = Timer;
     }
 
-    void SpwanBlocks(int amount)
+    private void Update()
     {
-        //var freeNodes = _nodes.Where(n=>n.OccupiedBlock == null).OrderBy(b=>Random.value);
+        TimeCount = TimeCount - Time.deltaTime;
+        if (TimeCount <= 0)
+            TimeCount = Timer;
 
-        for (int i = 0; i < amount; i++){
-            //var block = Instantiate(_blockPrefab);
-        }
     }
-
-
-
     
+
+
 }

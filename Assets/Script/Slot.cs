@@ -41,12 +41,12 @@ public class Slot : MonoBehaviour
             var farwardPos = other.transform.position;
             gameObject.transform.position = farwardPos;
             //LeanTween.moveLocalZ(gameObject, 10, .5f);
-            //Destroy(slotAttack.gameObject);
+            Destroy(slotAttack.gameObject);
         }
 
         if (other.gameObject.tag == "EnemyBlock")
         {
-            LeanTween.moveLocalZ(gameObject, 10, .5f);
+            //LeanTween.moveLocalZ(gameObject, 10, .5f);
         }
     }
 
