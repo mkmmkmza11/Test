@@ -4,8 +4,17 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public float Timer=5;
-    [SerializeField] protected float TimeCount;
+    public static GameManager instance;
+
+
+    public float Timer;
+    [SerializeField] public float TimeCount;
+    public bool isCount=false;
+
+    private void Awake()
+    {
+        instance = this;
+    }
 
     private void Start()
     {
@@ -16,9 +25,20 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        TimeCount = TimeCount - Time.deltaTime;
-        if (TimeCount <= 0)
-            TimeCount = Timer;
+        if (!isCount)
+        {
+
+            TimeCount = TimeCount - Time.deltaTime;
+            if (TimeCount <= 0)
+            {
+
+                isCount = true;
+                TimeCount = Timer;
+
+
+            }
+        }
+        
 
     }
     

@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpawnBlock : GameManager
+public class SpawnBlock : MonoBehaviour
 {
+    public GameManager gameManager;
     public GameObject bulletPrefab;
     public Transform muzzle;
     //public float Timer;
@@ -11,15 +12,17 @@ public class SpawnBlock : GameManager
     // Start is called before the first frame update
     void Start()
     {
-        Timer= GameManager.
-       // TimeCount = Timer;
+        
+        //TimeCount = Timer;
+       //TimeCount = Timer;
     }
 
     // Update is called once per frame
     void Update()
-    {   
+    {
+
         //TimeCount = TimeCount - Time.deltaTime;
-        if (TimeCount <= 0)
+        if (gameManager.isCount)
         {
 
             FireBlock();

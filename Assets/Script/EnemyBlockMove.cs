@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyBlockMove : GameManager
+public class EnemyBlockMove : MonoBehaviour
 {
+    public GameManager gameManager;
     //public float Timer;
     //[SerializeField] private float TimeCount;
     public int GanZ;
@@ -12,21 +13,27 @@ public class EnemyBlockMove : GameManager
     {
         
         GanZ = ((int)this.transform.position.z);
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        //TimeCount = TimeCount - Time.deltaTime;
-        if (TimeCount <= 0)
+        if (gameManager.isCount)
         {
-            GanZ -= 1;
-            LeanTween.moveLocalZ(gameObject, GanZ, 1);
-            TimeCount = Timer;
+            //TimeCount = TimeCount - Time.deltaTime;
+
+            
+            GanZ = ((int)this.transform.position.z);
+
+            LeanTween.moveZ(gameObject, GanZ-1, 1).setOnComplete(()=>gameManager.isCount=false);
+            //GanZ -= 1;
+
             if (GanZ <= 0)
             {
                 Destroy(gameObject);
             }
+
         }
 
     }

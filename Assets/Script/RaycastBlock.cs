@@ -9,14 +9,14 @@ public class RaycastBlock : MonoBehaviour
     {
         RaycastHit hit;
         // Does the ray intersect any objects excluding the player layer
-        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, 1))
+        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, 0.7f,6))
         {
             Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
             Debug.Log("Did Hit Forward");
 
+           
 
-
-
+            //hit.collider
 
 
 
@@ -28,7 +28,7 @@ public class RaycastBlock : MonoBehaviour
             //Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * 1000, Color.red);
             Debug.Log("Did not Hit");
         }
-        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.back), out hit, 1))
+        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.back), out hit, 0.7f))
         {
             Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.back) * hit.distance, Color.yellow);
             Debug.Log("Did Hit Back");
@@ -38,7 +38,7 @@ public class RaycastBlock : MonoBehaviour
             //Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * 1000, Color.red);
             Debug.Log("Did not Hit");
         }
-        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.left), out hit, 1))
+        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.left), out hit, 0.7f))
         {
             Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.left) * hit.distance, Color.yellow);
             Debug.Log("Did Hit Left");
@@ -51,7 +51,7 @@ public class RaycastBlock : MonoBehaviour
             //Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * 1000, Color.red);
             Debug.Log("Did not Hit");
         }
-        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.right), out hit, 1))
+        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.right), out hit, 0.7f))
         {
             Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.right) * hit.distance, Color.yellow);
             Debug.Log("Did Hit Rigth");
