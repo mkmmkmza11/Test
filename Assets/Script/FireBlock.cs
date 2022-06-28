@@ -25,6 +25,8 @@ public class FireBlock : MonoBehaviour
     public virtual void Fire()
     {
         GameObject BlockFire = Instantiate(bulletPrefab, muzzle.position, muzzle.rotation);
+        //BlockFire.AddComponent<RaycastBlock>();
+        BlockFire.GetComponent<RaycastBlock>().isChecker = false;
         BlockFire.AddComponent<MoveFire>();
         
 

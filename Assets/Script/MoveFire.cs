@@ -13,13 +13,12 @@ public class MoveFire : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-    }
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.tag == "EnemyBlock")
+        if (gameObject.GetComponent<RaycastBlock>().isEnter == true)
         {
-            LeanTween.cancel(gameObject);
+            GameObject block = gameObject;
+            block.GetComponent<EnemyBlockMove>();
+            Destroy(this);
         }
     }
+    
 }
