@@ -21,8 +21,8 @@ public class EnemyBlockMove : MonoBehaviour
         
         int rounded = (int)Mathf.Ceil(GanZ);
         GanZ = rounded;
-        Debug.Log(rounded);
-        LeanTween.move(gameObject, new Vector3(transform.localPosition.x, transform.localPosition.y, GanZ), 0.1f);
+        Debug.Log(rounded+ "GanZ");
+        //LeanTween.move(gameObject, new Vector3(transform.localPosition.x, transform.localPosition.y, GanZ), 0.1f);
 
     }   
 

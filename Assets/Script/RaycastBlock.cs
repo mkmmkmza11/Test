@@ -15,12 +15,21 @@ public class RaycastBlock : MonoBehaviour
     public TextMeshProUGUI m_Object;
     public bool isChecker;
     public GameObject BlockMat;
+    public int randomInt;
+
+    public bool is2;
+    public bool is4;
+    public bool is8;
+    public bool is16;
+    public bool is32;
     //public int ValueCheck;
 
 
     private void Start()
     {
-        value = 2;
+        NumberBlock();
+        //randomInt = Random.Range(0, 99);
+        //randomNumber(randomInt);
     }
     private void FixedUpdate()
     {
@@ -30,12 +39,13 @@ public class RaycastBlock : MonoBehaviour
 
         if (value == 2)
         {
-           BlockMat.GetComponent<Renderer>().material = newMaterialRef[0];
+            BlockMat.GetComponent<Renderer>().material = newMaterialRef[0];
         }
         else if (value == 4)
         {
-           BlockMat.GetComponent<Renderer>().material = newMaterialRef[1];
+            BlockMat.GetComponent<Renderer>().material = newMaterialRef[1];
         }
+        else BlockMat.GetComponent<Renderer>().material = newMaterialRef[0];
 
 
         //RaycastHit Hit;
@@ -50,7 +60,7 @@ public class RaycastBlock : MonoBehaviour
         //ValueCheck = value;
         if (RaycastCheck(Vector3.forward))
         {
-            isEnter = true;
+            IsEnter();
             CheckCollider(Hit.collider);
             //if (RaycastCheck(Vector3.back))
             //{
@@ -72,6 +82,13 @@ public class RaycastBlock : MonoBehaviour
 
 
 
+
+    }
+
+    void IsEnter()
+    {
+        if(!isChecker)
+        isEnter = true;
 
     }
 
@@ -126,23 +143,39 @@ public class RaycastBlock : MonoBehaviour
         return false;
     }
 
-    public void ChangeComponent()
+
+    public void NumberBlock()
     {
-        //gameObject
-        //gameObject.GetComponent<MoveFire>().
-        //Destroy(gameObject.MoveFire);
+        if (is2 == true)
+        {
+            value = 2;
+        }
+        else if (is4 == true)
+        {
+            value = 4;
+        }
+        else if (is8 == true)
+        {
+            value = 8;
+        }
+        else if (is16 == true)
+        {
+            value = 16;
+        }
+        else if (is32 == true)
+        {
+            value = 32;
+        }
     }
 
 
-
-
-    //public void ChangeColor()
-    //{
-    //    var CubeRederer = gameObject.GetComponent<Renderer>();
-    //    CubeRederer.material.SetColor("_Color", Color.red);
-    //    GameObject BlockThis = gameObject;
-    //    BlockThis.GetComponent < Renderer>();
-    //    BlockThis.material.SetColor("_Color", Color.red);
-    //    //var cubeRenderer = gameObject.GetComponent<Renderer>();
-    //}
-}
+        //public void ChangeColor()
+        //{
+        //    var CubeRederer = gameObject.GetComponent<Renderer>();
+        //    CubeRederer.material.SetColor("_Color", Color.red);
+        //    GameObject BlockThis = gameObject;
+        //    BlockThis.GetComponent < Renderer>();
+        //    BlockThis.material.SetColor("_Color", Color.red);
+        //    //var cubeRenderer = gameObject.GetComponent<Renderer>();
+        //}
+    }

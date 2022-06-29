@@ -16,7 +16,7 @@ public class MoveFire : MonoBehaviour
         if (gameObject.GetComponent<RaycastBlock>().isEnter == true)
         {
             GameObject block = gameObject;
-            block.GetComponent<EnemyBlockMove>();
+            block.AddComponent<EnemyBlockMove>();
             Destroy(this);
         }
     }
