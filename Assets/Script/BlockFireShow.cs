@@ -40,7 +40,7 @@ public class BlockFireShow : MonoBehaviour
         {
             BlockMat[0].GetComponent<Renderer>().material = newMaterialRef[1];
         }
-        else BlockMat[0].GetComponent<Renderer>().material = newMaterialRef[2];
+        else BlockMat[0].GetComponent<Renderer>().material = newMaterialRef[0];
 
         if (value2 == 2)
         {
@@ -50,7 +50,7 @@ public class BlockFireShow : MonoBehaviour
         {
             BlockMat[1].GetComponent<Renderer>().material = newMaterialRef[1];
         }
-        else BlockMat[1].GetComponent<Renderer>().material = newMaterialRef[2];
+        else BlockMat[1].GetComponent<Renderer>().material = newMaterialRef[0];
     }
 
     public void SetNumber()

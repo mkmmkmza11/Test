@@ -16,7 +16,7 @@ public class RaycastBlock : MonoBehaviour
     public bool isChecker;
     public GameObject BlockMat;
     public int randomInt;
-
+    public bool isForward;
     public bool is2;
     public bool is4;
     public bool is8;
@@ -58,26 +58,49 @@ public class RaycastBlock : MonoBehaviour
         //    //return true;
         //}
         //ValueCheck = value;
-        if (RaycastCheck(Vector3.forward))
+        if (!isChecker)
         {
-            IsEnter();
-            CheckCollider(Hit.collider);
-            //if (RaycastCheck(Vector3.back))
-            //{
-            //    CheckCollider(Hit.collider);
-            //}
-            //if (RaycastCheck(Vector3.forward))
-            //{
-            //    CheckCollider(Hit.collider);
-            //}
-            //if (RaycastCheck(Vector3.left))
-            //{
-            //    CheckCollider(Hit.collider);
-            //}
-            //if (RaycastCheck(Vector3.right))
-            //{
-            //    CheckCollider(Hit.collider);
-            //}
+
+            if (RaycastCheck(Vector3.forward))
+            {
+                IsEnter();
+                if (RaycastCheck(Vector3.forward))
+                {
+                    CheckCollider(Hit.collider);
+                    if (value == Value)
+                    {
+                        isForward = true;
+                    }
+                    
+                }
+                if (RaycastCheck(Vector3.left))
+                { CheckCollider(Hit.collider); }
+                if (RaycastCheck(Vector3.right))
+                { CheckCollider(Hit.collider); }
+
+                if (!isChecker)
+                {
+                    isChecker = true;
+                }
+
+
+                //if (RaycastCheck(Vector3.back))
+                //{
+                //    CheckCollider(Hit.collider);
+                //}
+                //if (RaycastCheck(Vector3.forward))
+                //{
+                //    CheckCollider(Hit.collider);
+                //}
+                //if (RaycastCheck(Vector3.left))
+                //{
+                //    CheckCollider(Hit.collider);
+                //}
+                //if (RaycastCheck(Vector3.right))
+                //{
+                //    CheckCollider(Hit.collider);
+                //}
+            }
         }
 
 
@@ -113,7 +136,7 @@ public class RaycastBlock : MonoBehaviour
                         Destroy(SlotAttack.gameObject);
                     
                 }
-                LeanTween.moveLocalZ(gameObject, farwardPos, 1f);
+                
 
 
             }
@@ -131,7 +154,7 @@ public class RaycastBlock : MonoBehaviour
     bool RaycastCheck(Vector3 direction)
     {
         //RaycastHit hit;
-        if (Physics.Raycast(transform.position, transform.TransformDirection(direction), out Hit, 2, 1<<6))
+        if (Physics.Raycast(transform.position, transform.TransformDirection(direction), out Hit, 0.9f, 1<<6))
         {
             Debug.DrawRay(transform.position, transform.TransformDirection(direction) * Hit.distance, Color.red);
             Debug.Log("Did Hit Forward");

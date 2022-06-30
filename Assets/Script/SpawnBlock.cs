@@ -31,23 +31,25 @@ public class SpawnBlock : MonoBehaviour
             //TimeCount = TimeCount - Time.deltaTime;
             if (GameManager.instance.isCount)
             {
-            FireBlock();
+            
             if (Onetime == false)
             {
+                FireBlock();
                 Onetime = true;
                 
                 randomInt = Random.Range(0, 99);
             }
-                if (GameManager.instance.isCount == false)
-                {
-                    Onetime = false;
-                }
+                
                 /*GameObject BlockFire = Instantiate(bulletPrefab, muzzle.position, muzzle.rotation);
                 BlockFire.AddComponent<EnemyBlockMove>();*/
 
                 // TimeCount = Timer;
             }
-        
+        if (GameManager.instance.isCount == false)
+        {
+            Onetime = false;
+        }
+
     }
     public virtual void FireBlock()
     {
@@ -55,26 +57,32 @@ public class SpawnBlock : MonoBehaviour
         //BlockFire.AddComponent<RaycastBlock>();
         if (randomInt >= 60)
         {
+            BlockFire.gameObject.name = "2";
             BlockFire.GetComponent<RaycastBlock>().is2 = true;
         }
         else if (randomInt >= 40)
         {
+            BlockFire.gameObject.name = "4";
             BlockFire.GetComponent<RaycastBlock>().is4 = true;
         }
         else if (randomInt >= 20)
         {
+            BlockFire.gameObject.name = "8";
             BlockFire.GetComponent<RaycastBlock>().is8 = true;
         }
         else if (randomInt >= 5)
         {
+            BlockFire.gameObject.name = "16";
             BlockFire.GetComponent<RaycastBlock>().is16 = true;
         }
         else
         {
+            BlockFire.gameObject.name = "32 ";
             BlockFire.GetComponent<RaycastBlock>().is32 = true;
         }
         BlockFire.GetComponent<RaycastBlock>().isChecker = true;
         BlockFire.AddComponent<EnemyBlockMove>();
+        
 
         
 

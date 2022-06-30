@@ -15,8 +15,8 @@ public class MoveFire : MonoBehaviour
     {
         if (gameObject.GetComponent<RaycastBlock>().isEnter == true)
         {
-            GameObject block = gameObject;
-            block.AddComponent<EnemyBlockMove>();
+            LeanTween.cancel(this.gameObject);
+            gameObject.AddComponent<EnemyBlockMove>();
             Destroy(this);
         }
     }

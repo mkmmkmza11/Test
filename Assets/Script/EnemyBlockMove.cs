@@ -10,6 +10,8 @@ public class EnemyBlockMove : MonoBehaviour
     //public float Timer;
     //[SerializeField] private float TimeCount;
     public float GanZ;
+    public bool onetime;
+    
     
     //public Material[] newMaterialRef;
     //[SerializeField] TextMeshProUGUI m_Object;
@@ -22,7 +24,7 @@ public class EnemyBlockMove : MonoBehaviour
         int rounded = (int)Mathf.Ceil(GanZ);
         GanZ = rounded;
         Debug.Log(rounded+ "GanZ");
-        //LeanTween.move(gameObject, new Vector3(transform.localPosition.x, transform.localPosition.y, GanZ), 0.1f);
+        LeanTween.move(gameObject, new Vector3(transform.localPosition.x, transform.localPosition.y, GanZ), 0.1f);
 
     }   
 
@@ -33,22 +35,37 @@ public class EnemyBlockMove : MonoBehaviour
 
         if (GameManager.instance.isCount)
         {
-
-            //GanZ = ((int)this.transform.position.z);
-            GanZ = GanZ-1;
-            //GanZ = ((int)this.transform.position.z);
-            //Debug.Log(GanZ-1);    
-            LeanTween.move(gameObject, new Vector3(transform.localPosition.x, transform.localPosition.y, transform.localPosition.z - 1), 1);
-            GameManager.instance.isCount = false;
-            return;
-            //GanZ -= 1;    
-           
-            /*if (GanZ <= 0)
+            if (!onetime)
             {
-                gameObject.SetActive(false);
-            }*/
+                onetime = true;
+                StartCoroutine(MovingBlock());
+                Debug.Log(gameObject.name + "Moving");
+            }
 
         }
+        if (gameObject.GetComponent<RaycastBlock>().isForward == true)
+        {
+            LeanTween.move(gameObject, new Vector3(transform.localPosition.x, transform.localPosition.y, transform.localPosition.z + 1), 1);
+            gameObject.GetComponent<RaycastBlock>().isForward = false;
+        }
+        
+    }
 
+    public void MoveBlock()
+    {
+        GanZ = GanZ - 1;
+        
+        LeanTween.move(gameObject, new Vector3(transform.localPosition.x, transform.localPosition.y, transform.localPosition.z - 1), 1);
+        
+        //return;
+    }
+
+
+    IEnumerator MovingBlock()
+    {
+        MoveBlock();
+        yield return new WaitForSeconds(0.5f);
+        GameManager.instance.isCount = false;
+        onetime = false;
     }
 }

@@ -40,7 +40,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        BlockFireShow1(99);
+        randomnum2 = 99;
 
         Timer = 5;
         TimeCount = Timer;
