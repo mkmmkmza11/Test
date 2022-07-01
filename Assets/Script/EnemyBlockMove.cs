@@ -11,16 +11,37 @@ public class EnemyBlockMove : MonoBehaviour
     //[SerializeField] private float TimeCount;
     public float GanZ;
     public bool onetime;
-    
-    
+    public bool IsFor;
+    public bool onetimereal;
+
     //public Material[] newMaterialRef;
     //[SerializeField] TextMeshProUGUI m_Object;
     // Start is called before the first frame update
+    private void Awake()
+    {
+       
+
+    }
+
+
+
     void Start()
     {
         
-        GanZ = this.transform.position.z;
-        
+            GanZ = this.transform.position.z;
+        if (!onetimereal)
+        {
+            if (IsFor)
+            {
+                Debug.Log("Isfor true");
+                GanZ = GanZ + 1;
+            }
+        }
+        if (!IsFor)
+        {
+            Debug.Log("isfor false");
+        }
+
         int rounded = (int)Mathf.Ceil(GanZ);
         GanZ = rounded;
         Debug.Log(rounded+ "GanZ");
@@ -45,7 +66,7 @@ public class EnemyBlockMove : MonoBehaviour
         }
         if (gameObject.GetComponent<RaycastBlock>().isForward == true)
         {
-            LeanTween.move(gameObject, new Vector3(transform.localPosition.x, transform.localPosition.y, transform.localPosition.z + 1), 1);
+            LeanTween.move(gameObject, new Vector3(transform.localPosition.x, transform.localPosition.y, GanZ), 1);
             gameObject.GetComponent<RaycastBlock>().isForward = false;
         }
         
@@ -53,9 +74,18 @@ public class EnemyBlockMove : MonoBehaviour
 
     public void MoveBlock()
     {
+        //if (!onetimereal)
+        //{
+        //    if (IsFor)
+        //    {
+        //        GanZ = GanZ + 1;
+        //        onetimereal = true;
+        //    }
+        //}
+
         GanZ = GanZ - 1;
         
-        LeanTween.move(gameObject, new Vector3(transform.localPosition.x, transform.localPosition.y, transform.localPosition.z - 1), 1);
+        LeanTween.move(gameObject, new Vector3(transform.localPosition.x, transform.localPosition.y, GanZ), 1);
         
         //return;
     }

@@ -17,6 +17,12 @@ public class MoveFire : MonoBehaviour
         {
             LeanTween.cancel(this.gameObject);
             gameObject.AddComponent<EnemyBlockMove>();
+
+            if (gameObject.GetComponent<RaycastBlock>().isForward == true)
+            {
+                gameObject.GetComponent<EnemyBlockMove>().IsFor=true;
+            }
+                
             Destroy(this);
         }
     }

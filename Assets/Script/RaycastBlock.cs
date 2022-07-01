@@ -22,6 +22,7 @@ public class RaycastBlock : MonoBehaviour
     public bool is8;
     public bool is16;
     public bool is32;
+    public bool isc;
     //public int ValueCheck;
 
 
@@ -45,8 +46,22 @@ public class RaycastBlock : MonoBehaviour
         {
             BlockMat.GetComponent<Renderer>().material = newMaterialRef[1];
         }
-        else BlockMat.GetComponent<Renderer>().material = newMaterialRef[0];
-
+        else if (value == 8)
+        {
+            BlockMat.GetComponent<Renderer>().material = newMaterialRef[2];
+        }
+        else if (value == 16)
+        {
+            BlockMat.GetComponent<Renderer>().material = newMaterialRef[3];
+        }
+        else if (value == 32)
+        {
+            BlockMat.GetComponent<Renderer>().material = newMaterialRef[4];
+        }
+        else if (value == 64)
+        {
+            BlockMat.GetComponent<Renderer>().material = newMaterialRef[5];
+        }
 
         //RaycastHit Hit;
         //if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out Hit, 2, 1<<6))
@@ -67,9 +82,10 @@ public class RaycastBlock : MonoBehaviour
                 if (RaycastCheck(Vector3.forward))
                 {
                     CheckCollider(Hit.collider);
-                    if (value == Value)
+                    if (isc)
                     {
                         isForward = true;
+                        //isc = false;
                     }
                     
                 }
@@ -133,7 +149,8 @@ public class RaycastBlock : MonoBehaviour
                     //LeanTween.moveLocalZ(gameObject, 10, .5f);
                     if (SlotAttack.isChecker)
                     {
-                        Destroy(SlotAttack.gameObject);
+                    isc = true;
+                    Destroy(SlotAttack.gameObject);
                     
                 }
                 
