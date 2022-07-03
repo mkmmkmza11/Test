@@ -6,29 +6,39 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
 
-
+    
+    [Header("SetTimeSpawn")]
     public float Timer;
-    [SerializeField] public float TimeCount;
-    public bool isCount=false;
 
-    public bool Eis2;
-    public bool Eis4;
-    public bool Eis8;
-    public bool Eis16;
-    public bool Eis32;
-
-    public bool E1is2;
-    public bool E1is4;
-    public bool E1is8;
-    public bool E1is16;
-    public bool E1is32;
-
-    int randomnum1;
-    int randomnum2;
+    [Header("SetTimeFire")]
     public float fireTimer;
+
+    [Header("View FireTimeCount")]
     [SerializeField] public float fireTimeCount;
-    public bool fireisCount = false;
-    public bool onetime;
+    [SerializeField] public bool fireisCount = false;
+    [SerializeField] public bool onetime;
+
+    [Header("View TimeSpawnCount")]
+    [SerializeField] public float TimeCount;
+    [SerializeField] public bool isCount=false;
+    [Header("Show Block Don't Touch")]
+    [SerializeField] public bool Eis2;
+    [SerializeField] public bool Eis4;
+    [SerializeField] public bool Eis8;
+    [SerializeField] public bool Eis16;
+    [SerializeField] public bool Eis32;
+
+    [SerializeField] public bool E1is2;
+    [SerializeField] public bool E1is4;
+    [SerializeField] public bool E1is8;
+    [SerializeField] public bool E1is16;
+    [SerializeField] public bool E1is32;
+
+    [SerializeField] int randomnum1;
+    [SerializeField] int randomnum2;
+
+
+    
 
 
 
@@ -42,7 +52,7 @@ public class GameManager : MonoBehaviour
     {
         randomnum2 = 99;
 
-        Timer = 5;
+        //Timer = 5;
         TimeCount = Timer;
         fireTimer = 1;
         fireTimeCount = fireTimer;

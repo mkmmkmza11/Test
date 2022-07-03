@@ -5,16 +5,17 @@ using TMPro;
 
 public class RaycastBlock : MonoBehaviour
 {
-
+    [Header("View Value")]
     [SerializeField] private int value;
-    RaycastHit Hit;
-    public bool isEnter=false;
-    // Start is called before the first frame update
     public int Value => value;
+    [Header("Set Material")]
     public Material[] newMaterialRef;
+    [Header("Set Text")]
     public TextMeshProUGUI m_Object;
-    public bool isChecker;
+    [Header("Set Block")]
     public GameObject BlockMat;
+    [Header("Is Check Don't Touch")]
+    public bool isChecker;
     public int randomInt;
     public bool isForward;
     public bool is2;
@@ -23,6 +24,8 @@ public class RaycastBlock : MonoBehaviour
     public bool is16;
     public bool is32;
     public bool isc;
+    public bool isEnter = false;
+    RaycastHit Hit;
     //public int ValueCheck;
 
 
@@ -85,7 +88,7 @@ public class RaycastBlock : MonoBehaviour
                     if (isc)
                     {
                         isForward = true;
-                        //isc = false;
+                        isc = false;
                     }
                     
                 }
@@ -96,7 +99,7 @@ public class RaycastBlock : MonoBehaviour
 
                 if (!isChecker)
                 {
-                    isChecker = true;
+                    //isChecker = true;
                 }
 
 
