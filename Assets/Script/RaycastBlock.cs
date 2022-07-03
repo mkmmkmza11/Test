@@ -103,22 +103,11 @@ public class RaycastBlock : MonoBehaviour
                 }
 
 
-                //if (RaycastCheck(Vector3.back))
-                //{
-                //    CheckCollider(Hit.collider);
-                //}
-                //if (RaycastCheck(Vector3.forward))
-                //{
-                //    CheckCollider(Hit.collider);
-                //}
-                //if (RaycastCheck(Vector3.left))
-                //{
-                //    CheckCollider(Hit.collider);
-                //}
-                //if (RaycastCheck(Vector3.right))
-                //{
-                //    CheckCollider(Hit.collider);
-                //}
+                if (value == 64)
+                {
+                    GameManager.instance.TakeMoney(64);
+                    Destroy(this.gameObject);
+                }
             }
         }
 
@@ -148,15 +137,17 @@ public class RaycastBlock : MonoBehaviour
                 
                     Debug.Log("trigger");
                     var farwardPos = hit.transform.position.z;
-                    //gameObject.transform.position = farwardPos;
-                    //LeanTween.moveLocalZ(gameObject, 10, .5f);
-                    if (SlotAttack.isChecker)
-                    {
-                    isc = true;
-                    Destroy(SlotAttack.gameObject);
-                    
-                }
-                
+                isc = true;
+                Destroy(SlotAttack.gameObject);
+                //gameObject.transform.position = farwardPos;
+                //LeanTween.moveLocalZ(gameObject, 10, .5f);
+                //if (SlotAttack.isChecker)
+                //{
+                //    isc = true;
+                //    
+
+                //}
+
 
 
             }

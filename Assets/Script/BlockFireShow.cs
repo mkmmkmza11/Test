@@ -40,76 +40,76 @@ public class BlockFireShow : MonoBehaviour
         TextShow[0].text = value1.ToString();
         TextShow[1].text = value2.ToString();
 
-        SetImage();
+        //SetImage();
 
         
 
     }
 
-    public void SetImage()
-    {
+    //public void SetImage()
+    //{
 
-        if (value1 == 2)
-        {
-            ImagesUi[0].GetComponent<Image>().sprite = ImagesShow[0];
-            TextShow[0].GetComponent<Renderer>().material = TextColor[0];
+    //    if (value1 == 2)
+    //    {
+    //        ImagesUi[0].GetComponent<Image>().sprite = ImagesShow[0];
+    //        TextShow[0].GetComponent<Renderer>().material = TextColor[0];
 
-            //BlockMat[0].GetComponent<Renderer>().material = newMaterialRef[0];
-        }
-        else if (value1 == 4)
-        {
-            ImagesUi[0].GetComponent<Image>().sprite = ImagesShow[1];
-            TextShow[0].GetComponent<Renderer>().material = TextColor[1];
-            // BlockMat[0].GetComponent<Renderer>().material = newMaterialRef[1];
-        }
-        else if (value1 == 8)
-        {
-            ImagesUi[0].GetComponent<Image>().sprite = ImagesShow[2];
-            TextShow[0].GetComponent<Renderer>().material = TextColor[2];
-            // BlockMat[0].GetComponent<Renderer>().material = newMaterialRef[1];
-        }
-        else if (value1 == 16)
-        {
-            ImagesUi[0].GetComponent<Image>().sprite = ImagesShow[3];
-            TextShow[0].GetComponent<Renderer>().material = TextColor[3];
-        }
-        // BlockMat[0].GetComponent<Renderer>().material = newMaterialRef[1];
-        //}else if (value1 == 32)
-        //{
-        //    ImagesUi[0].GetComponent<Image>().sprite = ImagesShow[0];
-        //   // BlockMat[0].GetComponent<Renderer>().material = newMaterialRef[1];
-        //}
-
-
-        if (value2 == 2)
-        {
-            ImagesUi[1].GetComponent<Image>().sprite = ImagesShow[0];
-            TextShow[1].GetComponent<Renderer>().material = TextColor[0];
-            //BlockMat[1].GetComponent<Renderer>().material = newMaterialRef[0];
-        }
-        else if (value2 == 4)
-        {
-            ImagesUi[1].GetComponent<Image>().sprite = ImagesShow[1];
-            TextShow[1].GetComponent<Renderer>().material = TextColor[1];
-            // BlockMat[1].GetComponent<Renderer>().material = newMaterialRef[1];
-        }
-        else if (value2 == 8)
-        {
-            ImagesUi[1].GetComponent<Image>().sprite = ImagesShow[2];
-            TextShow[1].GetComponent<Renderer>().material = TextColor[2];
-            // BlockMat[1].GetComponent<Renderer>().material = newMaterialRef[1];
-        }
-        else if (value2 == 16)
-        {
-            ImagesUi[1].GetComponent<Image>().sprite = ImagesShow[3];
-            TextShow[1].GetComponent<Renderer>().material = TextColor[3];
-            // BlockMat[1].GetComponent<Renderer>().material = newMaterialRef[1];
-        }
+    //        //BlockMat[0].GetComponent<Renderer>().material = newMaterialRef[0];
+    //    }
+    //    else if (value1 == 4)
+    //    {
+    //        ImagesUi[0].GetComponent<Image>().sprite = ImagesShow[1];
+    //        TextShow[0].GetComponent<Renderer>().material = TextColor[1];
+    //        // BlockMat[0].GetComponent<Renderer>().material = newMaterialRef[1];
+    //    }
+    //    else if (value1 == 8)
+    //    {
+    //        ImagesUi[0].GetComponent<Image>().sprite = ImagesShow[2];
+    //        TextShow[0].GetComponent<Renderer>().material = TextColor[2];
+    //        // BlockMat[0].GetComponent<Renderer>().material = newMaterialRef[1];
+    //    }
+    //    else if (value1 == 16)
+    //    {
+    //        ImagesUi[0].GetComponent<Image>().sprite = ImagesShow[3];
+    //        TextShow[0].GetComponent<Renderer>().material = TextColor[3];
+    //    }
+    //    // BlockMat[0].GetComponent<Renderer>().material = newMaterialRef[1];
+    //    //}else if (value1 == 32)
+    //    //{
+    //    //    ImagesUi[0].GetComponent<Image>().sprite = ImagesShow[0];
+    //    //   // BlockMat[0].GetComponent<Renderer>().material = newMaterialRef[1];
+    //    //}
 
 
-    }
+    //    if (value2 == 2)
+    //    {
+    //        ImagesUi[1].GetComponent<Image>().sprite = ImagesShow[0];
+    //        TextShow[1].GetComponent<Renderer>().material = TextColor[0];
+    //        //BlockMat[1].GetComponent<Renderer>().material = newMaterialRef[0];
+    //    }
+    //    else if (value2 == 4)
+    //    {
+    //        ImagesUi[1].GetComponent<Image>().sprite = ImagesShow[1];
+    //        TextShow[1].GetComponent<Renderer>().material = TextColor[1];
+    //        // BlockMat[1].GetComponent<Renderer>().material = newMaterialRef[1];
+    //    }
+    //    else if (value2 == 8)
+    //    {
+    //        ImagesUi[1].GetComponent<Image>().sprite = ImagesShow[2];
+    //        TextShow[1].GetComponent<Renderer>().material = TextColor[2];
+    //        // BlockMat[1].GetComponent<Renderer>().material = newMaterialRef[1];
+    //    }
+    //    else if (value2 == 16)
+    //    {
+    //        ImagesUi[1].GetComponent<Image>().sprite = ImagesShow[3];
+    //        TextShow[1].GetComponent<Renderer>().material = TextColor[3];
+    //        // BlockMat[1].GetComponent<Renderer>().material = newMaterialRef[1];
+    //    }
 
-    public void NumberBlock()
+
+    //}
+
+public void NumberBlock()
     {
         if (GameManager.instance.Eis2 == true)
         {

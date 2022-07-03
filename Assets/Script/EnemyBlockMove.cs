@@ -35,6 +35,7 @@ public class EnemyBlockMove : MonoBehaviour
             {
                 Debug.Log("Isfor true");
                 GanZ = GanZ + 1;
+                IsFor = false;
             }
         }
         if (!IsFor)

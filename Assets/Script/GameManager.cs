@@ -13,14 +13,18 @@ public class GameManager : MonoBehaviour
     [Header("SetTimeFire")]
     public float fireTimer;
 
+    [Header("View TimeSpawnCount")]
+    [SerializeField] public float TimeCount;
+    [SerializeField] public bool isCount = false;
+
     [Header("View FireTimeCount")]
     [SerializeField] public float fireTimeCount;
     [SerializeField] public bool fireisCount = false;
     [SerializeField] public bool onetime;
 
-    [Header("View TimeSpawnCount")]
-    [SerializeField] public float TimeCount;
-    [SerializeField] public bool isCount=false;
+    [Header("Set Money")]
+    public int Money;
+
     [Header("Show Block Don't Touch")]
     [SerializeField] public bool Eis2;
     [SerializeField] public bool Eis4;
@@ -53,9 +57,9 @@ public class GameManager : MonoBehaviour
         randomnum2 = 99;
 
         //Timer = 5;
-        TimeCount = Timer;
-        fireTimer = 1;
-        fireTimeCount = fireTimer;
+        //TimeCount = Timer;
+        //fireTimer = 1;
+        //fireTimeCount = fireTimer;
         
     }
 
@@ -104,6 +108,11 @@ public class GameManager : MonoBehaviour
         BlockFireShow1(randomnum1);
         BlockFireShow2(randomnum2);
         //Debug.Log(randomnum2);
+    }
+
+    public void TakeMoney(int MoneyValue)
+    {
+       Money = Money + MoneyValue;
     }
 
     public void SwitchNumber()
