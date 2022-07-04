@@ -316,6 +316,7 @@ MonoBehaviour:
   is32: 0
   isc: 0
   isEnter: 0
+  timecount: 6
 --- !u!1 &7464359210422958960
 GameObject:
   m_ObjectHideFlags: 0

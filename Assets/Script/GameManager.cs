@@ -41,6 +41,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] int randomnum1;
     [SerializeField] int randomnum2;
 
+    [SerializeField] public bool Take64;
+
 
     
 
@@ -113,6 +115,16 @@ public class GameManager : MonoBehaviour
     public void TakeMoney(int MoneyValue)
     {
        Money = Money + MoneyValue;
+    }
+
+    public void Take64Block()
+    {
+        Take64 = true;
+    }
+
+    public void BuyWeapon(int MoneyValue)
+    {
+        Money = Money - MoneyValue;
     }
 
     public void SwitchNumber()

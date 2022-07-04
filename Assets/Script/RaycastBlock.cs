@@ -25,12 +25,14 @@ public class RaycastBlock : MonoBehaviour
     public bool is32;
     public bool isc;
     public bool isEnter = false;
+    public float timecount;
     RaycastHit Hit;
     //public int ValueCheck;
 
 
     private void Start()
     {
+        //timecount = 3;
         NumberBlock();
         //randomInt = Random.Range(0, 99);
         //randomNumber(randomInt);
@@ -40,7 +42,74 @@ public class RaycastBlock : MonoBehaviour
 
         m_Object.text = value.ToString();
 
+        SetMat();
+        
 
+      
+
+        
+        if (!isChecker)
+        {
+
+            if (RaycastCheck(Vector3.forward))
+            {
+                IsEnter();
+                //gameObject.GetComponent<EnemyBlockMove>().MoveBlockUp();
+                if (RaycastCheck(Vector3.forward))
+                {
+                    CheckCollider(Hit.collider);
+                    if (isc)
+                    {
+                        isForward = true;
+                        isc = false;
+                    }
+                    
+                }
+                if (RaycastCheck(Vector3.left))
+                { CheckCollider(Hit.collider); }
+                if (RaycastCheck(Vector3.right))
+                { CheckCollider(Hit.collider); }
+
+                if (!isChecker)
+                {
+                    //isChecker = true;
+                }
+
+
+                if (value == 64)
+                {
+                    StartCoroutine(Destroy64Move());
+                }
+            }
+
+            
+        }
+        if (!RaycastCheck(Vector3.forward))
+        {
+            timecount = timecount - Time.deltaTime;
+
+
+            if (timecount <= 0)
+            {
+                gameObject.GetComponent<EnemyBlockMove>().MoveBlockUp();
+            }
+        }
+
+
+
+
+    }
+    IEnumerator Destroy64Move()
+    {
+        yield return new WaitForSeconds(0);
+        GameManager.instance.TakeMoney(64);
+        GameManager.instance.Take64Block();
+        yield return new WaitForSeconds(1f);
+        Destroy(this.gameObject);
+    }
+
+    public void SetMat()
+    {
         if (value == 2)
         {
             BlockMat.GetComponent<Renderer>().material = newMaterialRef[0];
@@ -65,55 +134,11 @@ public class RaycastBlock : MonoBehaviour
         {
             BlockMat.GetComponent<Renderer>().material = newMaterialRef[5];
         }
+    }
 
-        //RaycastHit Hit;
-        //if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out Hit, 2, 1<<6))
-        //{
-        //    Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * Hit.distance, Color.red);
-        //    Debug.Log("Did Hit Forward");
-        //    //CheckCollider(hit.collider);
-        //    //Hit = hit;
-        //    //return true;
-        //}
-        //ValueCheck = value;
-        if (!isChecker)
-        {
-
-            if (RaycastCheck(Vector3.forward))
-            {
-                IsEnter();
-                if (RaycastCheck(Vector3.forward))
-                {
-                    CheckCollider(Hit.collider);
-                    if (isc)
-                    {
-                        isForward = true;
-                        isc = false;
-                    }
-                    
-                }
-                if (RaycastCheck(Vector3.left))
-                { CheckCollider(Hit.collider); }
-                if (RaycastCheck(Vector3.right))
-                { CheckCollider(Hit.collider); }
-
-                if (!isChecker)
-                {
-                    //isChecker = true;
-                }
-
-
-                if (value == 64)
-                {
-                    GameManager.instance.TakeMoney(64);
-                    Destroy(this.gameObject);
-                }
-            }
-        }
-
-
-
-
+    public void setTimecount()
+    {
+        timecount = 0;
     }
 
     void IsEnter()
@@ -165,7 +190,7 @@ public class RaycastBlock : MonoBehaviour
     bool RaycastCheck(Vector3 direction)
     {
         //RaycastHit hit;
-        if (Physics.Raycast(transform.position, transform.TransformDirection(direction), out Hit, 0.9f, 1<<6))
+        if (Physics.Raycast(transform.position, transform.TransformDirection(direction), out Hit, 0.9f, 1 << 6))
         {
             Debug.DrawRay(transform.position, transform.TransformDirection(direction) * Hit.distance, Color.red);
             Debug.Log("Did Hit Forward");
@@ -173,8 +198,11 @@ public class RaycastBlock : MonoBehaviour
             //Hit = hit;
             return true;
         }
-        else Debug.DrawRay(transform.position, transform.TransformDirection(direction) * Hit.distance, Color.green);
-        return false;
+        else
+        {
+            Debug.DrawRay(transform.position, transform.TransformDirection(direction) * Hit.distance, Color.green);
+            return false;
+        }
     }
 
 
