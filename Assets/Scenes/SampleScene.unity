@@ -4800,12 +4800,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Timer: 5
   fireTimer: 1
-  TimeCount: 1
+  TimeCount: 5
   isCount: 0
   fireTimeCount: 1
   fireisCount: 0
   onetime: 0
-  Money: 0
+  Money: 64
   Eis2: 0
   Eis4: 0
   Eis8: 0
