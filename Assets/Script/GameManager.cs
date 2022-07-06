@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
@@ -23,7 +24,13 @@ public class GameManager : MonoBehaviour
     [SerializeField] public bool onetime;
 
     [Header("Set Money")]
+    public TextMeshProUGUI MoneyUi;
     public int Money;
+
+
+    [Header("GUI WIN LOSE")]
+    public GameObject WinGUI;
+    public GameObject LoseGUI;
 
     [Header("Show Block Don't Touch")]
     [SerializeField] public bool Eis2;
@@ -43,8 +50,14 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] public bool Take64;
 
+    [SerializeField] public bool oneTimeICE;
+    [SerializeField] public bool oneTimeFreeze;
 
-    
+    public bool GameLose;
+    public bool TakeMoneyOneTime;
+
+
+
 
 
 
@@ -67,6 +80,20 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
+
+        if (gameObject.GetComponent<Boss>().currentHP <= 0)
+        {
+            Time.timeScale = 0;
+            WinGUI.SetActive(true);
+
+        }
+
+        if (GameLose == true)
+        {
+            Time.timeScale = 0;
+            LoseGUI.SetActive(true);
+        }
+
         if (!isCount)
         {
             
@@ -107,14 +134,65 @@ public class GameManager : MonoBehaviour
             
         }
 
+        MoneyUi.text =("Money : " + Money.ToString());
+
         BlockFireShow1(randomnum1);
         BlockFireShow2(randomnum2);
         //Debug.Log(randomnum2);
     }
+    public void RunTime()
+    {
+        Time.timeScale = 1;
+    }
+
+    public void TakeICE()
+    {
+        if (!oneTimeICE)
+        {
+            TimeCount = TimeCount + Timer;
+            oneTimeICE = true;
+        }
+
+    }
+    public void TakeFreeze()
+    {
+        if (!oneTimeFreeze)
+        {
+            TimeCount = TimeCount + (Timer * 3);
+            oneTimeFreeze = true;
+        }
+    }
+
 
     public void TakeMoney(int MoneyValue)
     {
-       Money = Money + MoneyValue;
+        if (!TakeMoneyOneTime)
+        {
+            TakeMoneyOneTime = true;
+            Money = Money + MoneyValue;
+            TakeMoneyOneTime = false;
+        }
+      
+    }
+
+    public void TakePsy()
+    {
+        Take64 = true;
+    }
+
+    public void TakeGravity()
+    {
+        StartCoroutine(GravityGun());
+    }
+
+    IEnumerator GravityGun()
+    {
+        yield return new WaitForSeconds(0);
+        Take64 = true;
+        yield return new WaitForSeconds(1);
+        Take64 = true;
+        yield return new WaitForSeconds(1);
+        Take64 = true;
     }
 
     public void Take64Block()

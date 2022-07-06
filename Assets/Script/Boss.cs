@@ -6,7 +6,7 @@ public class Boss : MonoBehaviour
 {
     public int MaxHP;
     public int currentHP;
-    public int LaserValue;
+    //public int LaserValue;
     public HpBar hpBar;
 
 
@@ -26,21 +26,14 @@ public class Boss : MonoBehaviour
 
     }
 
-    void TakeDamage(int Damage)
+    public void TakeDamage(int Damage)
     {
         currentHP -= Damage;
         hpBar.SetHp(currentHP);
     }
 
 
-    public void Laser()
-    {
-        if (GameManager.instance.Money >= LaserValue)
-        {
-            TakeDamage(10);
-            GameManager.instance.BuyWeapon(LaserValue);
-        }
-    }
+    
 
 
 }

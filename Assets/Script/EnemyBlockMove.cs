@@ -53,7 +53,10 @@ public class EnemyBlockMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       
+        if (GanZ <= 1)
+        {
+            GameManager.instance.GameLose = true;
+        }
 
         if (GameManager.instance.isCount)
         {

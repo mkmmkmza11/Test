@@ -101,9 +101,9 @@ public class RaycastBlock : MonoBehaviour
     }
     IEnumerator Destroy64Move()
     {
+        GameManager.instance.Take64Block();
         yield return new WaitForSeconds(0);
         GameManager.instance.TakeMoney(64);
-        GameManager.instance.Take64Block();
         yield return new WaitForSeconds(1f);
         Destroy(this.gameObject);
     }

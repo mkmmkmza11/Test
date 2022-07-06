@@ -2,9 +2,13 @@
 {
     public class IntListBank : BaseListBank
     {
-        private readonly int[] _contents = {
-            1, 2, 3, 4, 5, 6, 7, 8, 9, 10
+        
+        private readonly int[] _contents
+            = {
+            1, 2, 3, 4, 5
         };
+        
+        
 
         public override object GetListContent(int index)
         {
