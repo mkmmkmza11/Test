@@ -13,7 +13,7 @@ public class EnemyBlockMove : MonoBehaviour
     public bool onetime;
     public bool IsFor;
     public bool onetimereal;
-
+    public bool onetimeUp;
     //public Material[] newMaterialRef;
     //[SerializeField] TextMeshProUGUI m_Object;
     // Start is called before the first frame update
@@ -34,7 +34,7 @@ public class EnemyBlockMove : MonoBehaviour
             if (IsFor)
             {
                 Debug.Log("Isfor true");
-                GanZ = GanZ + 1;
+                //GanZ = GanZ + 1;
                 IsFor = false;
             }
         }
@@ -53,7 +53,10 @@ public class EnemyBlockMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       
+        if (GanZ <= 1)
+        {
+            GameManager.instance.GameLose = true;
+        }
 
         if (GameManager.instance.isCount)
         {
@@ -70,7 +73,32 @@ public class EnemyBlockMove : MonoBehaviour
             LeanTween.move(gameObject, new Vector3(transform.localPosition.x, transform.localPosition.y, GanZ), 1);
             gameObject.GetComponent<RaycastBlock>().isForward = false;
         }
-        
+        Block64MoveUp();
+
+
+    }
+
+
+
+    public void Block64MoveUp()
+    {
+        if(GameManager.instance.Take64==true)
+        LeanTween.move(gameObject, new Vector3(transform.localPosition.x, transform.localPosition.y, GanZ + 1), 1).setOnComplete(()=>GameManager.instance.Take64=false);
+    }
+
+    public void MoveBlockUp()
+    {
+        if (!onetimeUp)
+        {
+            onetimeUp = true;
+            GanZ = GanZ + 1;
+            if (GanZ >= 11)
+            {
+                Destroy(this.gameObject);
+            }
+            LeanTween.move(gameObject, new Vector3(transform.localPosition.x, transform.localPosition.y, GanZ), 1).setOnComplete(()=>onetimeUp=false);
+            
+        }
     }
 
     public void MoveBlock()
