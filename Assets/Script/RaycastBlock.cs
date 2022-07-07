@@ -26,6 +26,7 @@ public class RaycastBlock : MonoBehaviour
     public bool isc;
     public bool isEnter = false;
     public float timecount;
+    public bool Onetime64;
     RaycastHit Hit;
     //public int ValueCheck;
 
@@ -103,8 +104,13 @@ public class RaycastBlock : MonoBehaviour
     {
         GameManager.instance.Take64Block();
         yield return new WaitForSeconds(0);
-        GameManager.instance.TakeMoney(64);
+        if (!Onetime64)
+        {
+            Onetime64 = true; 
+            GameManager.instance.TakeMoney();
+        }
         yield return new WaitForSeconds(1f);
+        Onetime64 = false;
         Destroy(this.gameObject);
     }
 
@@ -163,6 +169,7 @@ public class RaycastBlock : MonoBehaviour
                     Debug.Log("trigger");
                     var farwardPos = hit.transform.position.z;
                 isc = true;
+                
                 Destroy(SlotAttack.gameObject);
                 //gameObject.transform.position = farwardPos;
                 //LeanTween.moveLocalZ(gameObject, 10, .5f);

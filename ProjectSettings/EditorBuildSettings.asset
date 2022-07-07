@@ -11,6 +11,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MenuSence.unity
     guid: afd67b0f3c36d4685acbe5dcdd5c6880
+  - enabled: 1
+    path: Assets/Scenes/MainGameTest.unity
+    guid: 9fc0d4010bbf28b4594072e72b8655ab
   m_configObjects:
     com.unity.adaptiveperformance.simulator.provider_settings: {fileID: 11400000,
       guid: 0444a99d431554645938c842af051d97, type: 2}

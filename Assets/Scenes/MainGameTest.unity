@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18028396, g: 0.22571427, b: 0.30692327, a: 1}
+  m_IndirectSpecularColor: {r: 0.1801854, g: 0.22559239, b: 0.3067718, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3780,7 +3780,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Content: {fileID: 794219335}
   m_Horizontal: 1
-  m_Vertical: 1
+  m_Vertical: 0
   m_MovementType: 1
   m_Elasticity: 0.1
   m_Inertia: 1
@@ -6648,15 +6648,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90979884222ca4b7d9c5f2bbac1c5d9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Timer: 7
+  Timer: 15
   fireTimer: 1
   TimeCount: 1
   isCount: 0
   fireTimeCount: 1
   fireisCount: 0
   onetime: 0
+  MoneyText: 'M : '
   MoneyUi: {fileID: 2097743068}
-  Money: 0
+  Money: 64
+  MoneyEarn: 64
   WinGUI: {fileID: 646561645}
   LoseGUI: {fileID: 833660266}
   Eis2: 0
@@ -6676,6 +6678,9 @@ MonoBehaviour:
   oneTimeFreeze: 0
   GameLose: 0
   TakeMoneyOneTime: 0
+  TakeDamageAnim: 0
+  DeadAnim: 0
+  UseSkillAnim: 0
 --- !u!4 &785283241
 Transform:
   m_ObjectHideFlags: 0
@@ -6785,7 +6790,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47f0b5b73124a47f89b76d8f581933d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxHP: 250
+  MaxHP: 1000
   currentHP: 0
   hpBar: {fileID: 794675587}
 --- !u!114 &785283245
@@ -12482,7 +12487,7 @@ PrefabInstance:
     - target: {fileID: 3309032681932664692, guid: f07bd1bb98f7d8f479faa3ccdab63d51,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f07bd1bb98f7d8f479faa3ccdab63d51, type: 3}
@@ -12781,7 +12786,7 @@ PrefabInstance:
     - target: {fileID: 7224378353843181461, guid: 80bc4b3255c49e646a8cc2072e99246e,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8001196119573417263, guid: 80bc4b3255c49e646a8cc2072e99246e,
         type: 3}

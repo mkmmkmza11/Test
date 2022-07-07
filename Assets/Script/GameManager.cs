@@ -24,8 +24,10 @@ public class GameManager : MonoBehaviour
     [SerializeField] public bool onetime;
 
     [Header("Set Money")]
+    public string MoneyText;
     public TextMeshProUGUI MoneyUi;
     public int Money;
+    public int MoneyEarn;
 
 
     [Header("GUI WIN LOSE")]
@@ -56,7 +58,10 @@ public class GameManager : MonoBehaviour
     public bool GameLose;
     public bool TakeMoneyOneTime;
 
-
+    [Header("AnimSetting")]
+    [SerializeField] public bool TakeDamageAnim;
+    [SerializeField] public bool DeadAnim;
+    [SerializeField] public bool UseSkillAnim;
 
 
 
@@ -83,14 +88,15 @@ public class GameManager : MonoBehaviour
 
         if (gameObject.GetComponent<Boss>().currentHP <= 0)
         {
-            Time.timeScale = 0;
+            DeadAnim = true;
+            Time.timeScale = 1;
             WinGUI.SetActive(true);
 
         }
 
         if (GameLose == true)
         {
-            Time.timeScale = 0;
+            Time.timeScale = 1;
             LoseGUI.SetActive(true);
         }
 
@@ -134,7 +140,7 @@ public class GameManager : MonoBehaviour
             
         }
 
-        MoneyUi.text =("Money : " + Money.ToString());
+        MoneyUi.text =MoneyText + Money.ToString();
 
         BlockFireShow1(randomnum1);
         BlockFireShow2(randomnum2);
@@ -164,12 +170,12 @@ public class GameManager : MonoBehaviour
     }
 
 
-    public void TakeMoney(int MoneyValue)
+    public void TakeMoney()
     {
         if (!TakeMoneyOneTime)
         {
             TakeMoneyOneTime = true;
-            Money = Money + MoneyValue;
+            Money = Money + MoneyEarn;
             TakeMoneyOneTime = false;
         }
       

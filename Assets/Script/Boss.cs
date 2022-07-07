@@ -28,8 +28,20 @@ public class Boss : MonoBehaviour
 
     public void TakeDamage(int Damage)
     {
+        
         currentHP -= Damage;
         hpBar.SetHp(currentHP);
+        DelayDamage();
+       
+    }
+
+    IEnumerator DelayDamage()
+    {
+        yield return new WaitForSeconds(0);
+        GameManager.instance.TakeDamageAnim = true;
+        yield return new WaitForSeconds(1);
+        GameManager.instance.TakeDamageAnim = false;
+
     }
 
 

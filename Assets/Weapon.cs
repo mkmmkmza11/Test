@@ -65,6 +65,7 @@ public class Weapon : MonoBehaviour
         ICEText.text = ICEValue.ToString();
         FreezeText.text = FreezeValue.ToString();
         PsyText.text = PsyValue.ToString();
+        GravityText.text = GravityValue.ToString();
         LighingText.text = LighingValue.ToString();
         ThunderText.text = ThunderValue.ToString();
         
@@ -166,7 +167,7 @@ public class Weapon : MonoBehaviour
             {
                 gameObject.GetComponent<Boss>().TakeDamage(GravityDamage);
                 GameManager.instance.BuyWeapon(GravityValue);
-                GameManager.instance.TakeGravity();
+                //GameManager.instance.TakeGravity();
                 PsyCount = PsyTimer;
             }
 

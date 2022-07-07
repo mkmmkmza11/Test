@@ -53,7 +53,7 @@ public class EnemyBlockMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (GanZ <= 1)
+        if (GanZ <= 0)
         {
             GameManager.instance.GameLose = true;
         }
@@ -70,11 +70,14 @@ public class EnemyBlockMove : MonoBehaviour
         }
         if (gameObject.GetComponent<RaycastBlock>().isForward == true)
         {
-            LeanTween.move(gameObject, new Vector3(transform.localPosition.x, transform.localPosition.y, GanZ), 1);
+            //LeanTween.move(gameObject, new Vector3(transform.localPosition.x, transform.localPosition.y, GanZ), 1);
             gameObject.GetComponent<RaycastBlock>().isForward = false;
         }
         Block64MoveUp();
-
+        if(GanZ >= 11)
+        {
+            Destroy(this.gameObject);
+        }
 
     }
 
@@ -94,10 +97,11 @@ public class EnemyBlockMove : MonoBehaviour
             GanZ = GanZ + 1;
             if (GanZ >= 11)
             {
+                LeanTween.cancel(this.gameObject);
                 Destroy(this.gameObject);
             }
-            LeanTween.move(gameObject, new Vector3(transform.localPosition.x, transform.localPosition.y, GanZ), 1).setOnComplete(()=>onetimeUp=false);
-            
+            LeanTween.move(gameObject, new Vector3(transform.localPosition.x, transform.localPosition.y, GanZ), 1).setOnComplete(() => onetimeUp = false);
+
         }
     }
 
