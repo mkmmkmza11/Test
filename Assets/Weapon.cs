@@ -14,6 +14,17 @@ public class Weapon : MonoBehaviour
     public TextMeshProUGUI GravityText;
     public TextMeshProUGUI LighingText;
     public TextMeshProUGUI ThunderText;
+    [Header("WeaponCooldownText")]
+    public TextMeshProUGUI LaserCooldownText;
+    public TextMeshProUGUI BigLaserCooldownText;
+    public TextMeshProUGUI ICECooldownText;
+    public TextMeshProUGUI FreezeCooldownText;
+    public TextMeshProUGUI PsyCooldownText;
+    public TextMeshProUGUI GravityCooldownText;
+    public TextMeshProUGUI LighingCooldownText;
+    public TextMeshProUGUI ThunderCooldownText;
+
+    int A1,A2,A3,A4,A5,A6,A7,A8;
 
     [Header("Laser")]
     public int LaserValue;
@@ -68,6 +79,27 @@ public class Weapon : MonoBehaviour
         GravityText.text = GravityValue.ToString();
         LighingText.text = LighingValue.ToString();
         ThunderText.text = ThunderValue.ToString();
+
+        A1 = (int)LaserCount;
+        A2 = (int)BigLaserCount;
+        A3 = (int)ICECount;
+        A4 = (int)FreezeCount;
+        A5 = (int)PsyCount;
+        A6 = (int)GravityCount;
+        A7 = (int)LighingCount;
+        A8 = (int)ThunderCount;
+
+
+
+
+        LaserCooldownText.text = A1.ToString();
+        BigLaserCooldownText.text = A2.ToString();
+        ICECooldownText.text = A3.ToString();
+        FreezeCooldownText.text = A4.ToString();
+        PsyCooldownText.text = A5.ToString();
+        GravityCooldownText.text = A6.ToString();
+        LighingCooldownText.text = A7.ToString();
+        ThunderCooldownText.text = A8.ToString();
         
 
 
@@ -77,13 +109,45 @@ public class Weapon : MonoBehaviour
 
     public void TimeUpdate()
     {
-        LaserCount = LaserCount - Time.deltaTime;
-        BigLaserCount = BigLaserCount - Time.deltaTime;
-        ICECount = ICECount - Time.deltaTime;
-        FreezeCount = FreezeCount - Time.deltaTime;
-        PsyCount = PsyCount - Time.deltaTime;
-        LighingCount = LighingCount - Time.deltaTime;
-        ThunderCount = ThunderCount - Time.deltaTime;
+        if (LaserCount >= 1)
+        {
+            LaserCount = LaserCount - Time.deltaTime;
+        }
+        if (BigLaserCount >= 1)
+        {
+            BigLaserCount = BigLaserCount - Time.deltaTime;
+        }
+        if (ICECount >= 1)
+        {
+            ICECount = ICECount - Time.deltaTime;
+        }
+        if (FreezeCount >= 1)
+        {
+            FreezeCount = FreezeCount - Time.deltaTime;
+        }
+        if (PsyCount >= 1)
+        {
+            PsyCount = PsyCount - Time.deltaTime;
+        }
+        if (GravityCount >= 1)
+        {
+            GravityCount = GravityCount - Time.deltaTime;
+        }
+        if (LighingCount >= 1)
+        {
+            LighingCount = LighingCount - Time.deltaTime;
+        }
+        if (ThunderCount >= 1)
+        {
+            ThunderCount = ThunderCount - Time.deltaTime;
+        }
+
+
+
+
+
+
+        
     }
     public void Laser()
     {
