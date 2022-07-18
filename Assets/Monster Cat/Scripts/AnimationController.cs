@@ -18,19 +18,19 @@ public class AnimationController : MonoBehaviour
     {
         if(mAnimator != null)
         {
-            if(GameManager.instance.TakeDamageAnim)
+            if(Input.GetKeyDown(KeyCode.Y))
             {
                 mAnimator.SetTrigger("TakeDamage");
             }
-            if (GameManager.instance.DeadAnim)
+            if (Input.GetKeyDown(KeyCode.U))
             {
                 mAnimator.SetTrigger("Dead");
             }
-            if (GameManager.instance.isCount)
+            if (Input.GetKeyDown(KeyCode.I))
             {
                 mAnimator.SetTrigger("Taunt");
             }
-            if (GameManager.instance.UseSkillAnim)
+            if (Input.GetKeyDown(KeyCode.O))
             {
                 mAnimator.SetTrigger("UseSkill");
             }

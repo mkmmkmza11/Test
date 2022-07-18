@@ -5,6 +5,8 @@ using TMPro;
 
 public class RaycastBlock : MonoBehaviour
 {
+    [Header("Set Block in Side")]
+    public GameObject[] BlockinSide;
     [Header("View Value")]
     [SerializeField] private int value;
     public int Value => value;
@@ -44,6 +46,7 @@ public class RaycastBlock : MonoBehaviour
         m_Object.text = value.ToString();
 
         SetMat();
+        SetBlockinSide();
         
 
       
@@ -106,11 +109,11 @@ public class RaycastBlock : MonoBehaviour
         yield return new WaitForSeconds(0);
         if (!Onetime64)
         {
-            Onetime64 = true; 
-            GameManager.instance.TakeMoney();
+            //Onetime64 = true; 
+            //GameManager.instance.TakeMoney();
         }
         yield return new WaitForSeconds(1f);
-        Onetime64 = false;
+        //Onetime64 = false;
         Destroy(this.gameObject);
     }
 
@@ -142,6 +145,69 @@ public class RaycastBlock : MonoBehaviour
         }
     }
 
+    public void SetBlockinSide()
+    {
+        if (value == 2)
+        {
+            BlockinSide[0].SetActive(true);
+            BlockinSide[1].SetActive(false);
+            BlockinSide[2].SetActive(false);
+            BlockinSide[3].SetActive(false);
+            BlockinSide[4].SetActive(false);
+            BlockinSide[5].SetActive(false);
+
+        }
+        else if (value == 4)
+        {
+            BlockinSide[0].SetActive(false);
+            BlockinSide[1].SetActive(true);
+            BlockinSide[2].SetActive(false);
+            BlockinSide[3].SetActive(false);
+            BlockinSide[4].SetActive(false);
+            BlockinSide[5].SetActive(false);
+        }
+        else if (value == 8)
+        {
+            BlockinSide[0].SetActive(false);
+            BlockinSide[1].SetActive(false);
+            BlockinSide[2].SetActive(true);
+            BlockinSide[3].SetActive(false);
+            BlockinSide[4].SetActive(false);
+            BlockinSide[5].SetActive(false);
+        }
+        else if (value == 16)
+        {
+            BlockinSide[0].SetActive(false);
+            BlockinSide[1].SetActive(false);
+            BlockinSide[2].SetActive(false);
+            BlockinSide[3].SetActive(true);
+            BlockinSide[4].SetActive(false);
+            BlockinSide[5].SetActive(false);
+        }
+        else if (value == 32)
+        {
+            BlockinSide[0].SetActive(false);
+            BlockinSide[1].SetActive(false);
+            BlockinSide[2].SetActive(false);
+            BlockinSide[3].SetActive(false);
+            BlockinSide[4].SetActive(true);
+            BlockinSide[5].SetActive(false);
+        }
+        else if (value == 64)
+        {
+            BlockinSide[0].SetActive(false);
+            BlockinSide[1].SetActive(false);
+            BlockinSide[2].SetActive(false);
+            BlockinSide[3].SetActive(false);
+            BlockinSide[4].SetActive(false);
+            BlockinSide[5].SetActive(true);
+        }
+
+
+
+
+    }
+
     public void setTimecount()
     {
         timecount = 0;
@@ -164,9 +230,14 @@ public class RaycastBlock : MonoBehaviour
                 Debug.Log("equal");
                 // total
                 
-                    value = CalculateTotal(hit.GetComponent<RaycastBlock>().Value);
-                
-                    Debug.Log("trigger");
+                value = CalculateTotal(hit.GetComponent<RaycastBlock>().Value);
+                if (!Onetime64)
+                {
+                    Onetime64 = true;
+                    GameManager.instance.TakeMoney(value);
+                }
+                Onetime64 = false;
+                Debug.Log("trigger");
                     var farwardPos = hit.transform.position.z;
                 isc = true;
                 

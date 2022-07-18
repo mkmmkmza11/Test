@@ -109,35 +109,35 @@ public class Weapon : MonoBehaviour
 
     public void TimeUpdate()
     {
-        if (LaserCount >= 1)
+        if (LaserCount >= 0)
         {
             LaserCount = LaserCount - Time.deltaTime;
         }
-        if (BigLaserCount >= 1)
+        if (BigLaserCount >= 0)
         {
             BigLaserCount = BigLaserCount - Time.deltaTime;
         }
-        if (ICECount >= 1)
+        if (ICECount >= 0)
         {
             ICECount = ICECount - Time.deltaTime;
         }
-        if (FreezeCount >= 1)
+        if (FreezeCount >= 0)
         {
             FreezeCount = FreezeCount - Time.deltaTime;
         }
-        if (PsyCount >= 1)
+        if (PsyCount >= 0)
         {
             PsyCount = PsyCount - Time.deltaTime;
         }
-        if (GravityCount >= 1)
+        if (GravityCount >= 0)
         {
             GravityCount = GravityCount - Time.deltaTime;
         }
-        if (LighingCount >= 1)
+        if (LighingCount >= 0)
         {
             LighingCount = LighingCount - Time.deltaTime;
         }
-        if (ThunderCount >= 1)
+        if (ThunderCount >= 0)
         {
             ThunderCount = ThunderCount - Time.deltaTime;
         }

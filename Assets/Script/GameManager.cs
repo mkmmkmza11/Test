@@ -27,7 +27,7 @@ public class GameManager : MonoBehaviour
     public string MoneyText;
     public TextMeshProUGUI MoneyUi;
     public int Money;
-    public int MoneyEarn;
+    //public int MoneyEarn;
 
 
     [Header("GUI WIN LOSE")]
@@ -170,7 +170,7 @@ public class GameManager : MonoBehaviour
     }
 
 
-    public void TakeMoney()
+    public void TakeMoney(int MoneyEarn)
     {
         if (!TakeMoneyOneTime)
         {
