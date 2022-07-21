@@ -76,6 +76,7 @@ public class EnemyBlockMove : MonoBehaviour
         Block64MoveUp();
         if(GanZ >= 11)
         {
+            LeanTween.cancel(this.gameObject);
             Destroy(this.gameObject);
         }
 
@@ -95,39 +96,36 @@ public class EnemyBlockMove : MonoBehaviour
         {
             onetimeUp = true;
             GanZ = GanZ + 1;
-            if (GanZ >= 11)
-            {
-                LeanTween.cancel(this.gameObject);
-                Destroy(this.gameObject);
-            }
+            
+            
             LeanTween.move(gameObject, new Vector3(transform.localPosition.x, transform.localPosition.y, GanZ), 1).setOnComplete(() => onetimeUp = false);
+            
+            
 
+        }
+        if (GanZ >= 10)
+        {
+            LeanTween.cancel(this.gameObject);
+            Destroy(this.gameObject);
         }
     }
 
     public void MoveBlock()
     {
-        //if (!onetimereal)
-        //{
-        //    if (IsFor)
-        //    {
-        //        GanZ = GanZ + 1;
-        //        onetimereal = true;
-        //    }
-        //}
+        
 
         GanZ = GanZ - 1;
         
         LeanTween.move(gameObject, new Vector3(transform.localPosition.x, transform.localPosition.y, GanZ), 1);
         
-        //return;
+        
     }
 
 
     IEnumerator MovingBlock()
     {
         MoveBlock();
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1f);
         GameManager.instance.isCount = false;
         onetime = false;
     }

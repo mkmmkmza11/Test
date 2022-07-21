@@ -48,10 +48,6 @@ public class RaycastBlock : MonoBehaviour
         SetMat();
         SetBlockinSide();
         
-
-      
-
-        
         if (!isChecker)
         {
 
@@ -90,15 +86,17 @@ public class RaycastBlock : MonoBehaviour
         }
         if (!RaycastCheck(Vector3.forward))
         {
-            timecount = timecount - Time.deltaTime;
-
-
+        
             if (timecount <= 0)
             {
                 gameObject.GetComponent<EnemyBlockMove>().MoveBlockUp();
             }
         }
-
+        if (timecount >= 0)
+        {
+            timecount = timecount - Time.deltaTime;
+        }
+        
 
 
 
@@ -114,6 +112,7 @@ public class RaycastBlock : MonoBehaviour
         }
         yield return new WaitForSeconds(1f);
         //Onetime64 = false;
+        LeanTween.cancel(this.gameObject);
         Destroy(this.gameObject);
     }
 
@@ -242,16 +241,7 @@ public class RaycastBlock : MonoBehaviour
                 isc = true;
                 
                 Destroy(SlotAttack.gameObject);
-                //gameObject.transform.position = farwardPos;
-                //LeanTween.moveLocalZ(gameObject, 10, .5f);
-                //if (SlotAttack.isChecker)
-                //{
-                //    isc = true;
-                //    
-
-                //}
-
-
+               
 
             }
 
@@ -309,13 +299,5 @@ public class RaycastBlock : MonoBehaviour
     }
 
 
-        //public void ChangeColor()
-        //{
-        //    var CubeRederer = gameObject.GetComponent<Renderer>();
-        //    CubeRederer.material.SetColor("_Color", Color.red);
-        //    GameObject BlockThis = gameObject;
-        //    BlockThis.GetComponent < Renderer>();
-        //    BlockThis.material.SetColor("_Color", Color.red);
-        //    //var cubeRenderer = gameObject.GetComponent<Renderer>();
-        //}
+
     }

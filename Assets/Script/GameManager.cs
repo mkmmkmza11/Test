@@ -58,6 +58,8 @@ public class GameManager : MonoBehaviour
     public bool GameLose;
     public bool TakeMoneyOneTime;
 
+    public bool TimeCheck;
+
     [Header("AnimSetting")]
     [SerializeField] public bool TakeDamageAnim;
     [SerializeField] public bool DeadAnim;
@@ -85,6 +87,7 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
+        
 
         if (gameObject.GetComponent<Boss>().currentHP <= 0)
         {
@@ -102,20 +105,22 @@ public class GameManager : MonoBehaviour
 
         if (!isCount)
         {
-            
-                
-                TimeCount = TimeCount - Time.deltaTime;
-                if (TimeCount <= 0)
-                {
-                    
-                    isCount = true;
-                    
-
-                    TimeCount = Timer;
 
 
-                }
-            
+            TimeCount = TimeCount - Time.deltaTime;
+            if (!TimeCheck) { 
+
+            if (TimeCount <= 0)
+            {
+
+                isCount = true;
+
+
+                TimeCount = Timer;
+
+
+            }
+        }
         }
 
         if (!fireisCount)
@@ -195,9 +200,9 @@ public class GameManager : MonoBehaviour
     {
         yield return new WaitForSeconds(0);
         Take64 = true;
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(1.5f);  
         Take64 = true;
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(1.5f);
         Take64 = true;
     }
 

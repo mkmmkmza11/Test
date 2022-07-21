@@ -23,7 +23,7 @@ public class MoveFire : MonoBehaviour
             {
                 gameObject.GetComponent<EnemyBlockMove>().IsFor=true;
             }
-                
+            
             Destroy(this);
         }
     }

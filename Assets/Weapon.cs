@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class Weapon : MonoBehaviour
 {
@@ -23,6 +24,16 @@ public class Weapon : MonoBehaviour
     public TextMeshProUGUI GravityCooldownText;
     public TextMeshProUGUI LighingCooldownText;
     public TextMeshProUGUI ThunderCooldownText;
+    [Header("ImageCooldown")]
+    public Image LaserCooldownImage;
+    public Image BigLaserCooldownImage;
+    public Image ICECooldownImage;
+    public Image FreezeCooldownImage;
+    public Image PsyCooldownImage;
+    public Image GravityCooldownImage;
+    public Image LighingCooldownImage;
+    public Image ThunderCooldownImage;
+
 
     int A1,A2,A3,A4,A5,A6,A7,A8;
 
@@ -67,9 +78,41 @@ public class Weapon : MonoBehaviour
     public float ThunderCount;
     public float ThunderTimer;
 
+    private void Start()
+    {
+        LaserCooldownImage.gameObject.SetActive(false);
+        BigLaserCooldownImage.gameObject.SetActive(false);
+        ICECooldownImage.gameObject.SetActive(false);
+        FreezeCooldownImage.gameObject.SetActive(false);
+        PsyCooldownImage.gameObject.SetActive(false);
+        GravityCooldownImage.gameObject.SetActive(false);
+        LighingCooldownImage.gameObject.SetActive(false);
+        ThunderCooldownImage.gameObject.SetActive(false);
+
+        LaserCooldownImage.fillAmount = 0f;
+        BigLaserCooldownImage.fillAmount = 0f;
+        ICECooldownImage.fillAmount = 0f;
+        FreezeCooldownImage.fillAmount = 0f;
+        PsyCooldownImage.fillAmount = 0f;
+        GravityCooldownImage.fillAmount = 0f;
+        LighingCooldownImage.fillAmount = 0f;
+        ThunderCooldownImage.fillAmount = 0f;
+
+        LaserCooldownText.gameObject.SetActive(false);
+        BigLaserCooldownText.gameObject.SetActive(false);
+        ICECooldownText.gameObject.SetActive(false);
+        FreezeCooldownText.gameObject.SetActive(false);
+        PsyCooldownText.gameObject.SetActive(false);
+        GravityCooldownText.gameObject.SetActive(false);
+        LighingCooldownText.gameObject.SetActive(false);
+        ThunderCooldownText.gameObject.SetActive(false);
+
+
+    }
+
     private void Update()
     {
-        TimeUpdate();
+       
 
         LaserText.text = LaserValue.ToString();
         BigLaserText.text = BigLaserValue.ToString();
@@ -100,7 +143,8 @@ public class Weapon : MonoBehaviour
         GravityCooldownText.text = A6.ToString();
         LighingCooldownText.text = A7.ToString();
         ThunderCooldownText.text = A8.ToString();
-        
+
+        TimeUpdate();
 
 
     }
@@ -111,35 +155,99 @@ public class Weapon : MonoBehaviour
     {
         if (LaserCount >= 0)
         {
+            LaserCooldownText.gameObject.SetActive(true);
+            LaserCooldownImage.gameObject.SetActive(true);
+            LaserCooldownImage.fillAmount = LaserCount / LaserTimer;
             LaserCount = LaserCount - Time.deltaTime;
         }
+        else
+        {
+            LaserCooldownImage.gameObject.SetActive(false);
+            LaserCooldownText.gameObject.SetActive(false);
+        }
+
         if (BigLaserCount >= 0)
         {
+            BigLaserCooldownText.gameObject.SetActive(true);
+            BigLaserCooldownImage.gameObject.SetActive(true);
+            BigLaserCooldownImage.fillAmount = BigLaserCount / BigLaserTimer;
             BigLaserCount = BigLaserCount - Time.deltaTime;
+        }
+        else
+        {
+            BigLaserCooldownText.gameObject.SetActive(false);
+            BigLaserCooldownImage.gameObject.SetActive(false);
         }
         if (ICECount >= 0)
         {
+            ICECooldownText.gameObject.SetActive(true);
+            ICECooldownImage.gameObject.SetActive(true);
+            ICECooldownImage.fillAmount = ICECount / ICETimer;
             ICECount = ICECount - Time.deltaTime;
+        }
+        else
+        {
+            ICECooldownText.gameObject.SetActive(false);
+            ICECooldownImage.gameObject.SetActive(false);
         }
         if (FreezeCount >= 0)
         {
+            FreezeCooldownText.gameObject.SetActive(true);
+            FreezeCooldownImage.gameObject.SetActive(true);
+            FreezeCooldownImage.fillAmount = FreezeCount / FreezeTimer;
             FreezeCount = FreezeCount - Time.deltaTime;
+        }
+        else
+        {
+            FreezeCooldownText.gameObject.SetActive(false);
+            FreezeCooldownImage.gameObject.SetActive(false);
         }
         if (PsyCount >= 0)
         {
+            PsyCooldownText.gameObject.SetActive(true);
+            PsyCooldownImage.gameObject.SetActive(true);
+            PsyCooldownImage.fillAmount = PsyCount / PsyTimer;
             PsyCount = PsyCount - Time.deltaTime;
+        }
+        else
+        {
+            PsyCooldownText.gameObject.SetActive(false);
+            PsyCooldownImage.gameObject.SetActive(false);
         }
         if (GravityCount >= 0)
         {
+            GravityCooldownText.gameObject.SetActive(true);
+            GravityCooldownImage.gameObject.SetActive(true);
+            GravityCooldownImage.fillAmount = GravityCount / GravityTimer;
             GravityCount = GravityCount - Time.deltaTime;
+        }
+        else
+        {
+            GravityCooldownText.gameObject.SetActive(false);
+            GravityCooldownImage.gameObject.SetActive(false);
         }
         if (LighingCount >= 0)
         {
+            LighingCooldownText.gameObject.SetActive(true);
+            LighingCooldownImage.gameObject.SetActive(true);
+            LighingCooldownImage.fillAmount = LighingCount / LighingTimer;
             LighingCount = LighingCount - Time.deltaTime;
+        }else
+        {
+            LighingCooldownText.gameObject.SetActive(false);
+            LighingCooldownImage.gameObject.SetActive(false);
         }
         if (ThunderCount >= 0)
         {
+            ThunderCooldownText.gameObject.SetActive(true);
+            ThunderCooldownImage.gameObject.SetActive(true);
+            ThunderCooldownImage.fillAmount = ThunderCount / ThunderTimer;
             ThunderCount = ThunderCount - Time.deltaTime;
+        }
+        else
+        {
+            ThunderCooldownText.gameObject.SetActive(false);
+            ThunderCooldownImage.gameObject.SetActive(false);
         }
 
 
@@ -147,7 +255,12 @@ public class Weapon : MonoBehaviour
 
 
 
-        
+
+
+
+
+
+
     }
     public void Laser()
     {
@@ -231,7 +344,7 @@ public class Weapon : MonoBehaviour
             {
                 gameObject.GetComponent<Boss>().TakeDamage(GravityDamage);
                 GameManager.instance.BuyWeapon(GravityValue);
-                //GameManager.instance.TakeGravity();
+                GameManager.instance.TakeGravity();
                 PsyCount = PsyTimer;
             }
 

@@ -27,7 +27,6 @@ public class SpawnBlock : MonoBehaviour
     {
 
         
-
             //TimeCount = TimeCount - Time.deltaTime;
             if (GameManager.instance.isCount)
             {
