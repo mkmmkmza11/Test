@@ -34,6 +34,9 @@ public class GameManager : MonoBehaviour
     public GameObject WinGUI;
     public GameObject LoseGUI;
 
+    [Header("GUI Setting")]
+    public GameObject SettingGUI;
+
     [Header("Show Block Don't Touch")]
     [SerializeField] public bool Eis2;
     [SerializeField] public bool Eis4;
@@ -76,6 +79,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        Time.timeScale = 1;
         randomnum2 = 99;
 
         //Timer = 5;
@@ -151,6 +155,17 @@ public class GameManager : MonoBehaviour
         BlockFireShow2(randomnum2);
         //Debug.Log(randomnum2);
     }
+    public void SettingGUIOpen()
+    {
+        Time.timeScale = 0;
+        SettingGUI.SetActive(true);
+    }
+    public void CloseGUI()
+    {
+        Time.timeScale = 1;
+        SettingGUI.SetActive(false);
+    }
+
     public void RunTime()
     {
         Time.timeScale = 1;

@@ -33,6 +33,16 @@ public class Weapon : MonoBehaviour
     public Image GravityCooldownImage;
     public Image LighingCooldownImage;
     public Image ThunderCooldownImage;
+    [Header("Paticle Gameobject")]
+    public GameObject[] LaserPaticle;
+    public GameObject[] BigLaserPaticle;
+    public GameObject[] ICEPaticle;
+    public GameObject[] FreezePaticle;
+    public GameObject[] PsyPaticle;
+    public GameObject[] GravityPaticle;
+    public GameObject[] LighingPaticle;
+    public GameObject[] ThunderPaticle;
+
 
 
     int A1,A2,A3,A4,A5,A6,A7,A8;
@@ -271,6 +281,7 @@ public class Weapon : MonoBehaviour
                 
                 gameObject.GetComponent<Boss>().TakeDamage(LaserDamage);
                 GameManager.instance.BuyWeapon(LaserValue);
+                StartCoroutine(LaserPaticleActive());
                 LaserCount = LaserTimer;
             }
 
@@ -285,6 +296,7 @@ public class Weapon : MonoBehaviour
             {
                 gameObject.GetComponent<Boss>().TakeDamage(BigLaserDamage);
                 GameManager.instance.BuyWeapon(BigLaserValue);
+                StartCoroutine(BigLaserPaticleActive());
                 BigLaserCount = BigLaserTimer;
             }
 
@@ -300,6 +312,7 @@ public class Weapon : MonoBehaviour
                 gameObject.GetComponent<Boss>().TakeDamage(ICEDamage);
                 GameManager.instance.BuyWeapon(ICEValue);
                 GameManager.instance.TakeICE();
+                StartCoroutine(ICEPaticleActive());
                 ICECount = ICETimer;
             }
 
@@ -315,6 +328,7 @@ public class Weapon : MonoBehaviour
                 gameObject.GetComponent<Boss>().TakeDamage(FreezeDamage);
                 GameManager.instance.BuyWeapon(FreezeValue);
                 GameManager.instance.TakeFreeze();
+                StartCoroutine(FreezePaticleActive());
                 FreezeCount = FreezeTimer;
             }
 
@@ -330,6 +344,7 @@ public class Weapon : MonoBehaviour
                 gameObject.GetComponent<Boss>().TakeDamage(PsyDamage);
                 GameManager.instance.BuyWeapon(PsyValue);
                 GameManager.instance.TakePsy();
+                StartCoroutine(PsyPaticleActive());
                 PsyCount = PsyTimer;
             }
 
@@ -345,6 +360,7 @@ public class Weapon : MonoBehaviour
                 gameObject.GetComponent<Boss>().TakeDamage(GravityDamage);
                 GameManager.instance.BuyWeapon(GravityValue);
                 GameManager.instance.TakeGravity();
+                StartCoroutine(GravityPaticleActive());
                 PsyCount = PsyTimer;
             }
 
@@ -359,6 +375,7 @@ public class Weapon : MonoBehaviour
             {
                 gameObject.GetComponent<Boss>().TakeDamage(LighingDamage);
                 GameManager.instance.BuyWeapon(LighingValue);
+                StartCoroutine(LighingPaticleActive());
                 LighingCount = LighingTimer;
             }
 
@@ -373,6 +390,7 @@ public class Weapon : MonoBehaviour
             {
                 gameObject.GetComponent<Boss>().TakeDamage(ThunderDamage);
                 GameManager.instance.BuyWeapon(ThunderValue);
+                StartCoroutine(ThunderPaticleActive());
                 ThunderCount = ThunderTimer;
             }
 
@@ -381,7 +399,75 @@ public class Weapon : MonoBehaviour
 
 
 
+    IEnumerator LaserPaticleActive()
+    {
+        LaserPaticle[0].SetActive(true);
+        LaserPaticle[1].SetActive(true);
+        yield return new WaitForSeconds(1.5f);
+        LaserPaticle[0].SetActive(false);
+        LaserPaticle[1].SetActive(false);
+    }
 
+    IEnumerator BigLaserPaticleActive()
+    {
+        BigLaserPaticle[0].SetActive(true);
+        BigLaserPaticle[1].SetActive(true);
+        yield return new WaitForSeconds(1.5f);
+        BigLaserPaticle[0].SetActive(false);
+        BigLaserPaticle[1].SetActive(false);
+    }
 
+    IEnumerator ICEPaticleActive()
+    {
+        ICEPaticle[0].SetActive(true);
+        ICEPaticle[1].SetActive(true);
+        yield return new WaitForSeconds(1.5f);
+        ICEPaticle[0].SetActive(false);
+        ICEPaticle[1].SetActive(false);
+    }
 
+    IEnumerator FreezePaticleActive()
+    {
+        FreezePaticle[0].SetActive(true);
+        FreezePaticle[1].SetActive(true);
+        yield return new WaitForSeconds(1.5f);
+        FreezePaticle[0].SetActive(false);
+        FreezePaticle[1].SetActive(false);
+    }
+
+    IEnumerator PsyPaticleActive()
+    {
+        PsyPaticle[0].SetActive(true);
+        PsyPaticle[1].SetActive(true);
+        yield return new WaitForSeconds(1.5f);
+        PsyPaticle[0].SetActive(false);
+        PsyPaticle[1].SetActive(false);
+    }
+
+    IEnumerator GravityPaticleActive()
+    {
+        GravityPaticle[0].SetActive(true);
+        GravityPaticle[1].SetActive(true);
+        yield return new WaitForSeconds(1.5f);
+        GravityPaticle[0].SetActive(false);
+        GravityPaticle[1].SetActive(false);
+    }
+
+    IEnumerator LighingPaticleActive()
+    {
+        LighingPaticle[0].SetActive(true);
+        LighingPaticle[1].SetActive(true);
+        yield return new WaitForSeconds(1.5f);
+        LighingPaticle[0].SetActive(false);
+        LighingPaticle[1].SetActive(false);
+    }
+
+    IEnumerator ThunderPaticleActive()
+    {
+        ThunderPaticle[0].SetActive(true);
+        ThunderPaticle[1].SetActive(true);
+        yield return new WaitForSeconds(1.5f);
+        ThunderPaticle[0].SetActive(false);
+        ThunderPaticle[1].SetActive(false);
+    }
 }

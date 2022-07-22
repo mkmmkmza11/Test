@@ -6,8 +6,17 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/MainGameTest.unity
-    guid: 9fc0d4010bbf28b4594072e72b8655ab
+    path: Assets/Scenes/OldSampleScene.unity
+    guid: c850ee8c3b14cc8459e7e186857cf567
+  - enabled: 1
+    path: Assets/Scenes/MenuSence.unity
+    guid: afd67b0f3c36d4685acbe5dcdd5c6880
+  - enabled: 1
+    path: Assets/Scenes/CatStage/CatStage1.unity
+    guid: b3885a231174c417ea9ab254d75a540e
+  - enabled: 1
+    path: Assets/Scenes/CatStage/CatStage2.unity
+    guid: 50fd72a82b9684ff4a331834b00bead2
   m_configObjects:
     com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: ec18f75b370c84e35a8a310ccc5dfb8b,
       type: 2}
