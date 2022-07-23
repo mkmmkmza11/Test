@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.1801854, g: 0.22559239, b: 0.3067718, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028341, g: 0.22571313, b: 0.30692148, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -875,8 +875,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1342621162}
   m_HandleRect: {fileID: 1342621161}
   m_Direction: 0
-  m_Value: 0.00000017951523
-  m_Size: 0.70175445
+  m_Value: 0.00000017951517
+  m_Size: 0.7017544
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -2421,6 +2421,7 @@ MonoBehaviour:
   Money: 3000000
   WinGUI: {fileID: 2128109348}
   LoseGUI: {fileID: 151525260}
+  SettingGUI: {fileID: 0}
   Eis2: 0
   Eis4: 0
   Eis8: 0
