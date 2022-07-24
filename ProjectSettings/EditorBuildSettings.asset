@@ -16,7 +16,40 @@ EditorBuildSettings:
     guid: b3885a231174c417ea9ab254d75a540e
   - enabled: 1
     path: Assets/Scenes/CatStage/CatStage2.unity
-    guid: 50fd72a82b9684ff4a331834b00bead2
+    guid: e9eaf9fee83ff44229faf73655df45fe
+  - enabled: 1
+    path: Assets/Scenes/CatStage/CatStage3.unity
+    guid: 3ff93b05ad00145358f5c78301b713e9
+  - enabled: 1
+    path: Assets/Scenes/CatStage/CatStage4.unity
+    guid: 206bed0aaaaa84e3887447d3356fe98d
+  - enabled: 1
+    path: Assets/Scenes/CactusStage/CactusStage1.unity
+    guid: 76afe6b4527914863bf41cbdd6c5dda8
+  - enabled: 1
+    path: Assets/Scenes/CactusStage/CactusStage2.unity
+    guid: 85426b5dbe0e6469e97cbcf0ea9bd56b
+  - enabled: 1
+    path: Assets/Scenes/CactusStage/CactusStage3.unity
+    guid: 3c5a8f597164d4c9895cf0b63e175a2d
+  - enabled: 1
+    path: Assets/Scenes/CactusStage/CactusStage4.unity
+    guid: 8e860fb1ae3ca4ad7b064f606bfbc2ef
+  - enabled: 1
+    path: Assets/Scenes/RobotStage/RobotStage1.unity
+    guid: dff799016baec4d72bda70ab7b733661
+  - enabled: 1
+    path: Assets/Scenes/RobotStage/RobotStage2.unity
+    guid: fa77761c9c4914ad8857745749bee7b6
+  - enabled: 1
+    path: Assets/Scenes/RobotStage/RobotStage3.unity
+    guid: d1eee840f7703473288a26bf48549a74
+  - enabled: 1
+    path: Assets/Scenes/RobotStage/RobotStage4.unity
+    guid: 1a66dc0a63fea4bc193b531f5f3b7172
+  - enabled: 1
+    path: Assets/Scenes/EndlessStage/EndlessStage.unity
+    guid: dfb94feb331344af4b63e22cda466fb3
   m_configObjects:
     com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: ec18f75b370c84e35a8a310ccc5dfb8b,
       type: 2}
