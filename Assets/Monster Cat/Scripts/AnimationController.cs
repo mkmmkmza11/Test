@@ -7,6 +7,8 @@ public class AnimationController : MonoBehaviour
 
     private Animator mAnimator;
 
+    public bool[] onetime;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -18,25 +20,67 @@ public class AnimationController : MonoBehaviour
     {
         if(mAnimator != null)
         {
-            if(Input.GetKeyDown(KeyCode.Y))
+            if(GameManager.instance.TakeDamageAnim)
             {
-                mAnimator.SetTrigger("TakeDamage");
+                if (!onetime[0])
+                {
+                    onetime[0] = true;
+                    mAnimator.SetTrigger("TakeDamage");
+                    GameManager.instance.TakeDamageAnim = false;
+                    if(GameManager.instance.TakeDamageAnim == false)
+                    {
+                        onetime[0] = false;
+                    }
+                    
+                }
+                
+
             }
-            if (Input.GetKeyDown(KeyCode.U))
+            if (GameManager.instance.DeadAnim)
             {
-                mAnimator.SetTrigger("Dead");
+                if (!onetime[1])
+                {
+                    onetime[1] = true;
+                    mAnimator.SetTrigger("Dead");
+                    
+                    if (GameManager.instance.DeadAnim == false)
+                    {
+                        onetime[1] = false;
+                    }
+
+
+                }
+               
             }
-            if (Input.GetKeyDown(KeyCode.I))
+            if (GameManager.instance.isCount)
             {
-                mAnimator.SetTrigger("Taunt");
+                if (!onetime[2])
+                {
+                    onetime[2] = true;
+                    mAnimator.SetTrigger("Taunt");
+
+                    if (GameManager.instance.isCount == false)
+                    {
+                        onetime[2] = false;
+                    }
+
+
+                }
             }
-            if (Input.GetKeyDown(KeyCode.O))
+
+            if (GameManager.instance.UseSkillAnim)
             {
-                mAnimator.SetTrigger("UseSkill");
-            }
-            if (Input.GetKeyDown(KeyCode.P))
-            {
-                mAnimator.SetTrigger("Idle");
+                if (!onetime[3])
+                {
+                    onetime[3] = true;
+                    mAnimator.SetTrigger("UseSkill");
+                    GameManager.instance.UseSkillAnim = false;
+                    if (GameManager.instance.UseSkillAnim == false)
+                    {
+                        onetime[3] = false;
+                    }
+
+                }
             }
 
         }

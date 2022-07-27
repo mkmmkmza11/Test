@@ -29,7 +29,11 @@ public class RaycastBlock : MonoBehaviour
     public bool isEnter = false;
     public float timecount;
     public bool Onetime64;
+    public bool Skill1Onetime;
     RaycastHit Hit;
+    public bool oneTimeRandom;
+    int Random1;
+    public GameObject[] FusePaticle;
     //public int ValueCheck;
 
 
@@ -96,9 +100,18 @@ public class RaycastBlock : MonoBehaviour
         {
             timecount = timecount - Time.deltaTime;
         }
-        
 
 
+        if (GameManager.instance.Skill1ChangeBox)
+        {
+            if (!Skill1Onetime)
+            {
+                Skill1Onetime = true;
+                Skill1();
+
+            }
+            
+        }
 
     }
     IEnumerator Destroy64Move()
@@ -233,6 +246,15 @@ public class RaycastBlock : MonoBehaviour
                 if (!Onetime64)
                 {
                     Onetime64 = true;
+                    if (value == 64)
+                    {
+                        StartCoroutine(setFusePaticle(1));
+                    }
+                    else
+                    {
+                        StartCoroutine(setFusePaticle(0));
+                    }
+                    TimeCountEndless.instance.GetScore(Value);
                     GameManager.instance.TakeMoney(value);
                 }
                 Onetime64 = false;
@@ -247,6 +269,13 @@ public class RaycastBlock : MonoBehaviour
 
             
         }
+    }
+
+    IEnumerator setFusePaticle(int block)
+    {
+        FusePaticle[block].SetActive(true);
+        yield return new WaitForSeconds(3);
+        FusePaticle[block].SetActive(false);
     }
 
     public int CalculateTotal(int valueB)
@@ -298,6 +327,53 @@ public class RaycastBlock : MonoBehaviour
         }
     }
 
+    public void Skill1()
+    {
+        value = 2;
+    }
 
+    public void RandomInt()
+    {
+        
+        if (!oneTimeRandom)
+        {
+            if (GameManager.instance.Takepsy == true)
+            {
+                oneTimeRandom = true;
 
+                Random1 = Random.Range(0, 4);
+                if (Random1 == 0)
+                {
+                    value = 2;
+                }
+                if (Random1 == 1)
+                {
+                    value = 4;
+                }
+                if (Random1 == 2)
+                {
+                    value = 8;
+                }
+                if (Random1 == 3)
+                {
+                    value = 16;
+                }
+                if (Random1 == 4)
+                {
+                    value = 32;
+                }
+                StartCoroutine(Randoming());
+            }
+        }
+      
+
+    }
+
+    IEnumerator Randoming()
+    {
+        yield return new WaitForSeconds(1);
+        GameManager.instance.Takepsy = false;
+        oneTimeRandom = false;
+
+    }
     }

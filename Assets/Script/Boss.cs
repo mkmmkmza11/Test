@@ -4,17 +4,19 @@ using UnityEngine;
 
 public class Boss : MonoBehaviour
 {
-    public int MaxHP;
+    public float MaxHP;
     public int currentHP;
     //public int LaserValue;
     public HpBar hpBar;
-
+    public int precentHeal;
+    public bool Endless;
+    public bool BossDead;
 
     // Start is called before the first frame update
     void Start()
     {
-        currentHP = MaxHP;
-        hpBar.SetMaxHp(MaxHP);  
+        currentHP = (int)MaxHP;
+        hpBar.SetMaxHp((int)MaxHP);  
     }
 
     // Update is called once per frame
@@ -22,8 +24,11 @@ public class Boss : MonoBehaviour
     {
         hpBar.SetHp(currentHP);
 
-        
 
+        if (currentHP > MaxHP)
+        {
+            currentHP = (int)MaxHP;
+        }
     }
 
     public void TakeDamage(int Damage)
@@ -32,7 +37,10 @@ public class Boss : MonoBehaviour
         currentHP -= Damage;
         hpBar.SetHp(currentHP);
         DelayDamage();
-       
+        if (currentHP <= 0)
+        {
+            BossDead = true;
+        }
     }
 
     IEnumerator DelayDamage()
@@ -44,7 +52,28 @@ public class Boss : MonoBehaviour
 
     }
 
+    public void BossHealing()
+    {
+        currentHP = currentHP + ((int)MaxHP * precentHeal / 100);
+    }
 
+    public void BossDied()
+    {
+        if (Endless)
+        {
+            if (BossDead)
+            {
+                TimeCountEndless.instance.GetScore((int)MaxHP);
+                MaxHP = MaxHP * 1.1f;
+                currentHP = (int)MaxHP;
+
+
+            }
+        }
+        
+
+
+    }
     
 
 
