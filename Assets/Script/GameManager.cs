@@ -6,8 +6,9 @@ using TMPro;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
+    [Header("SetLevelMap")]
+    public int LevelMap;
 
-    
     [Header("SetTimeSpawn")]
     public float Timer;
 
@@ -33,6 +34,7 @@ public class GameManager : MonoBehaviour
     [Header("GUI WIN LOSE")]
     public GameObject WinGUI;
     public GameObject LoseGUI;
+    public bool Endless;
 
     [Header("GUI Setting")]
     public GameObject SettingGUI;
@@ -57,17 +59,29 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] public bool oneTimeICE;
     [SerializeField] public bool oneTimeFreeze;
+    public bool Takepsy;
 
     public bool GameLose;
     public bool TakeMoneyOneTime;
 
     public bool TimeCheck;
 
+    public bool Skill1ChangeBox;
+    public bool Skill2Swap;
+    public bool Skill3Value;
+    
+    public bool Skill4Steal;
+    public int PercentSteal;
+
+    public bool GameTimeLose;
+    public bool TakeDamage;
+    public bool Skill5Heal;
     [Header("AnimSetting")]
     [SerializeField] public bool TakeDamageAnim;
     [SerializeField] public bool DeadAnim;
     [SerializeField] public bool UseSkillAnim;
 
+    
 
 
 
@@ -91,19 +105,44 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        
 
-        if (gameObject.GetComponent<Boss>().currentHP <= 0)
+        if (!Endless)
         {
-            DeadAnim = true;
-            Time.timeScale = 1;
-            WinGUI.SetActive(true);
+            if (gameObject.GetComponent<Boss>().currentHP <= 0)
+            {
+                DeadAnim = true;
+                Time.timeScale = 0;
+                WinGUI.SetActive(true);
+                PlayerPrefs.SetInt("LevelMap", 1);
 
+
+
+                if (LevelMap >= PlayerPrefs.GetInt("LevelMap"))
+                {
+                    PlayerPrefs.SetInt("LevelMap", LevelMap);
+                }
+
+
+
+            }
+            
+        }
+
+        if (Endless)
+        {
+            if(gameObject.GetComponent<Boss>().currentHP <= 0)
+            {
+                DeadAnim = true;
+            }
+            if (gameObject.GetComponent<Boss>().currentHP >= 1)
+            {
+                DeadAnim = false;
+            }
         }
 
         if (GameLose == true)
         {
-            Time.timeScale = 1;
+            Time.timeScale = 0;
             LoseGUI.SetActive(true);
         }
 
@@ -154,16 +193,92 @@ public class GameManager : MonoBehaviour
         BlockFireShow1(randomnum1);
         BlockFireShow2(randomnum2);
         //Debug.Log(randomnum2);
+
+        Skill1Activition();
+        Skill2Activition();
+        Skill4Activition();
     }
-    public void SettingGUIOpen()
+
+   
+
+    public void Skill1Activition()
+    {
+        if (Skill1ChangeBox)
+        {
+            StartCoroutine(Skill1Activate());
+        }
+    }
+    
+    IEnumerator Skill1Activate()
+    {
+        yield return new WaitForSeconds(1.5f);
+            Skill1ChangeBox = false;
+        gameObject.GetComponent<RaycastBlock>().Skill1Onetime = false;
+
+        
+    }
+
+    public void Skill2Activition()
+    {
+        if (Skill2Swap)
+        {
+            StartCoroutine(Skill2Activate());
+        }
+    }
+
+    IEnumerator Skill2Activate()
+    {
+        yield return new WaitForSeconds(10);
+        Skill2Swap = false;
+        
+
+
+    }
+
+    public void Skill4Activition()
+    {
+        if (Skill4Steal)
+        {
+            StartCoroutine(Skill4Activate());
+        }
+    }
+
+    IEnumerator Skill4Activate()
+    {
+        Money = Money - (Money % PercentSteal);
+        yield return new WaitForSeconds(0);
+        Skill4Steal = false;
+
+
+
+    }
+    public void Skill5Activition()
+    {
+        if (Skill4Steal)
+        {
+            StartCoroutine(Skill5Activate());
+        }
+    }
+
+    IEnumerator Skill5Activate()
+    {
+        gameObject.GetComponent<Boss>().BossHealing();
+        yield return new WaitForSeconds(0);
+        Skill5Heal = false;
+
+
+
+    }
+
+    public void SettingGUIOpen(GameObject Gui)
     {
         Time.timeScale = 0;
-        SettingGUI.SetActive(true);
+        Gui.SetActive(true);
     }
-    public void CloseGUI()
+    public void CloseGUI(GameObject Gui)
     {
         Time.timeScale = 1;
-        SettingGUI.SetActive(false);
+        Gui.SetActive(false);
     }
 
     public void RunTime()
@@ -203,23 +318,15 @@ public class GameManager : MonoBehaviour
 
     public void TakePsy()
     {
-        Take64 = true;
+        Takepsy = true;
     }
 
     public void TakeGravity()
     {
-        StartCoroutine(GravityGun());
+        Take64 = true;
     }
 
-    IEnumerator GravityGun()
-    {
-        yield return new WaitForSeconds(0);
-        Take64 = true;
-        yield return new WaitForSeconds(1.5f);  
-        Take64 = true;
-        yield return new WaitForSeconds(1.5f);
-        Take64 = true;
-    }
+    
 
     public void Take64Block()
     {
@@ -229,15 +336,22 @@ public class GameManager : MonoBehaviour
     public void BuyWeapon(int MoneyValue)
     {
         Money = Money - MoneyValue;
+        TakeDamageAnim = true;
+
     }
 
     public void SwitchNumber()
     {
-        int wait1 = randomnum1;
-        int wait2 = randomnum2;
+        if (!Skill2Swap)
+        {
+            int wait1 = randomnum1;
+            int wait2 = randomnum2;
 
-        randomnum1 = wait2;
-        randomnum2 = wait1;
+            randomnum1 = wait2;
+            randomnum2 = wait1;
+        }
+
+        
 
 
 

@@ -43,7 +43,21 @@ public class Weapon : MonoBehaviour
     public GameObject[] LighingPaticle;
     public GameObject[] ThunderPaticle;
 
+    [Header("Set Info")]
+    public TextMeshProUGUI[] DamageInfo;
+    public TextMeshProUGUI[] CoolDownInfo;
+    public TextMeshProUGUI[] CostInfo;
 
+    [Header("Skill WeaponValue")]
+    public int PercentValue;
+     int CurrentLaserValue;
+     int CurrentBigLaserValue;
+     int CurrentICEValue;
+     int CurrentFreezeValue;
+     int CurrentPsyValue;
+     int CurrentGravityValue;
+     int CurrentLighingValue;
+     int CurrentThunderValue;
 
     int A1,A2,A3,A4,A5,A6,A7,A8;
 
@@ -88,7 +102,91 @@ public class Weapon : MonoBehaviour
     public float ThunderCount;
     public float ThunderTimer;
 
+    
+
     private void Start()
+    {
+
+        setStart();
+
+    }
+
+    private void Update()
+    {
+
+
+        SetUpdate();
+        setValue();
+        TimeUpdate();
+        TextInfo();
+
+    }
+    public void setValue()
+    {
+        if (GameManager.instance.Skill3Value)
+        {
+            CurrentLaserValue = LaserValue + ((LaserValue * PercentValue) / 100);
+            CurrentBigLaserValue = BigLaserValue + (BigLaserValue * PercentValue / 100);
+            CurrentICEValue = ICEValue + (ICEValue * PercentValue / 100);
+            CurrentFreezeValue = FreezeValue + (FreezeValue * PercentValue / 100);
+            CurrentPsyValue = PsyValue + (PsyValue * PercentValue / 100);
+            CurrentGravityValue = GravityValue + (GravityValue * PercentValue / 100);
+            CurrentLighingValue = LighingValue + (LighingValue * PercentValue / 100);
+            CurrentThunderValue = ThunderValue + (ThunderValue * PercentValue / 100);
+        }
+        else
+        {
+            CurrentLaserValue = LaserValue;
+            CurrentBigLaserValue = BigLaserValue;
+            CurrentICEValue = ICEValue;
+            CurrentFreezeValue = FreezeValue;
+            CurrentPsyValue = PsyValue;
+            CurrentGravityValue = GravityValue;
+            CurrentLighingValue = LighingValue;
+            CurrentThunderValue = ThunderValue;
+        }
+
+        if (!GameManager.instance.Skill3Value)
+        {
+            
+        }
+
+       
+    }
+    public void SetUpdate()
+    {
+        LaserText.text = CurrentLaserValue.ToString();
+        BigLaserText.text = CurrentBigLaserValue.ToString();
+        ICEText.text = CurrentICEValue.ToString();
+        FreezeText.text = CurrentFreezeValue.ToString();
+        PsyText.text = CurrentPsyValue.ToString();
+        GravityText.text = CurrentGravityValue.ToString();
+        LighingText.text = CurrentLighingValue.ToString();
+        ThunderText.text = CurrentThunderValue.ToString();
+
+        A1 = (int)LaserCount;
+        A2 = (int)BigLaserCount;
+        A3 = (int)ICECount;
+        A4 = (int)FreezeCount;
+        A5 = (int)PsyCount;
+        A6 = (int)GravityCount;
+        A7 = (int)LighingCount;
+        A8 = (int)ThunderCount;
+
+
+
+
+        LaserCooldownText.text = A1.ToString();
+        BigLaserCooldownText.text = A2.ToString();
+        ICECooldownText.text = A3.ToString();
+        FreezeCooldownText.text = A4.ToString();
+        PsyCooldownText.text = A5.ToString();
+        GravityCooldownText.text = A6.ToString();
+        LighingCooldownText.text = A7.ToString();
+        ThunderCooldownText.text = A8.ToString();
+    }
+
+    public void setStart()
     {
         LaserCooldownImage.gameObject.SetActive(false);
         BigLaserCooldownImage.gameObject.SetActive(false);
@@ -116,50 +214,44 @@ public class Weapon : MonoBehaviour
         GravityCooldownText.gameObject.SetActive(false);
         LighingCooldownText.gameObject.SetActive(false);
         ThunderCooldownText.gameObject.SetActive(false);
-
-
-    }
-
-    private void Update()
-    {
-       
-
-        LaserText.text = LaserValue.ToString();
-        BigLaserText.text = BigLaserValue.ToString();
-        ICEText.text = ICEValue.ToString();
-        FreezeText.text = FreezeValue.ToString();
-        PsyText.text = PsyValue.ToString();
-        GravityText.text = GravityValue.ToString();
-        LighingText.text = LighingValue.ToString();
-        ThunderText.text = ThunderValue.ToString();
-
-        A1 = (int)LaserCount;
-        A2 = (int)BigLaserCount;
-        A3 = (int)ICECount;
-        A4 = (int)FreezeCount;
-        A5 = (int)PsyCount;
-        A6 = (int)GravityCount;
-        A7 = (int)LighingCount;
-        A8 = (int)ThunderCount;
-
-
-
-
-        LaserCooldownText.text = A1.ToString();
-        BigLaserCooldownText.text = A2.ToString();
-        ICECooldownText.text = A3.ToString();
-        FreezeCooldownText.text = A4.ToString();
-        PsyCooldownText.text = A5.ToString();
-        GravityCooldownText.text = A6.ToString();
-        LighingCooldownText.text = A7.ToString();
-        ThunderCooldownText.text = A8.ToString();
-
-        TimeUpdate();
-
-
     }
 
     // Start is called before the first frame update
+
+    public void TextInfo()
+    {
+        DamageInfo[0].text = LaserDamage.ToString();
+        CoolDownInfo[0].text = LaserTimer.ToString();
+        CostInfo[0].text = CurrentLaserValue.ToString();
+
+        DamageInfo[1].text = BigLaserDamage.ToString();
+        CoolDownInfo[1].text = BigLaserTimer.ToString();
+        CostInfo[1].text = CurrentBigLaserValue.ToString();
+
+        DamageInfo[2].text = ICEDamage.ToString();
+        CoolDownInfo[2].text = ICETimer.ToString();
+        CostInfo[2].text = CurrentICEValue.ToString();
+
+        DamageInfo[3].text = FreezeDamage.ToString();
+        CoolDownInfo[3].text = FreezeTimer.ToString();
+        CostInfo[3].text = CurrentFreezeValue.ToString();
+
+        DamageInfo[4].text = PsyDamage.ToString();
+        CoolDownInfo[4].text = PsyTimer.ToString();
+        CostInfo[4].text = CurrentPsyValue.ToString();
+
+        DamageInfo[5].text = GravityDamage.ToString();
+        CoolDownInfo[5].text = GravityTimer.ToString();
+        CostInfo[5].text = CurrentGravityValue.ToString();
+
+        DamageInfo[6].text = LighingDamage.ToString();
+        CoolDownInfo[6].text = LighingTimer.ToString();
+        CostInfo[6].text = CurrentLighingValue.ToString();
+
+        DamageInfo[7].text = ThunderDamage.ToString();
+        CoolDownInfo[7].text = ThunderTimer.ToString();
+        CostInfo[7].text = CurrentThunderValue.ToString();
+    }
 
     public void TimeUpdate()
     {
@@ -355,13 +447,13 @@ public class Weapon : MonoBehaviour
     {
         if (GameManager.instance.Money >= GravityValue)
         {
-            if (PsyCount <= 0)
+            if (GravityCount <= 0)
             {
                 gameObject.GetComponent<Boss>().TakeDamage(GravityDamage);
                 GameManager.instance.BuyWeapon(GravityValue);
                 GameManager.instance.TakeGravity();
                 StartCoroutine(GravityPaticleActive());
-                PsyCount = PsyTimer;
+                GravityCount = GravityTimer;
             }
 
         }
